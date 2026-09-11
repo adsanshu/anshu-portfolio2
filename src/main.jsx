@@ -103,13 +103,52 @@ function Hero({ t, lang }) {
 }
 
 function Education({ t }) {
-  return <section className="section" id="education"><SectionHead icon={<GraduationCap />} title={t.education} suffix={t.official} /><div className="eduGrid">
-    {portfolio.education.map((e) => <article className="card eduCard" key={e.title}>
-      <div className="eduMark"><span>{e.mark}</span><small>OFFICIAL</small></div><div className="cardKicker">{e.type}</div>
-      <h3>{e.title}</h3><p>{e.subtitle}</p><small className="muted">{e.detail}</small>
-      <a className="outlineBtn" href={e.url} target="_blank" rel="noreferrer">{t.visit} {e.type} <ExternalLink /></a>
-    </article>)}
-  </div></section>;
+  return (
+    <section className="section" id="education">
+      <SectionHead
+        icon={<GraduationCap />}
+        title={t.education}
+        suffix={t.official}
+      />
+
+      <div className="eduGrid">
+        {portfolio.education.map((e) => (
+          <article className="card eduCard" key={e.title}>
+
+            <div className="eduImage">
+              {e.image ? (
+                <img src={e.image} alt={e.title} />
+              ) : (
+                <div className="eduMark">
+                  <span>{e.mark}</span>
+                  <small>OFFICIAL</small>
+                </div>
+              )}
+            </div>
+
+            <div className="cardKicker">{e.type}</div>
+
+            <h3>{e.title}</h3>
+
+            <p>{e.subtitle}</p>
+
+            <small className="muted">{e.detail}</small>
+
+            <a
+              className="outlineBtn"
+              href={e.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.visit} {e.type}
+              <ExternalLink />
+            </a>
+
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 function SectionHead({ icon, title, suffix }) { return <div className="sectionHead"><h2>{icon}{title}</h2>{suffix && <span>{suffix}</span>}</div>; }
