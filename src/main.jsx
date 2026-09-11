@@ -339,6 +339,25 @@ function Lists({ t }) {
               key={typeof x === "string" ? x : x.name}
               whileHover={{ y: -4 }}
             >
+function Lists({ t }) {
+  return (
+    <div className="twoCol">
+
+      {/* CERTIFICATES */}
+      <section className="section compact" id="certificates">
+        <SectionHead
+          icon={<Award />}
+          title={t.certificates}
+          suffix="Verified Learning"
+        />
+
+        <div className="certificateGrid">
+          {portfolio.certificates.map((x) => (
+            <motion.article
+              className="card certificateCard"
+              key={typeof x === "string" ? x : x.name}
+              whileHover={{ y: -4 }}
+            >
               <div className="certificateImage">
                 {typeof x !== "string" && x.image ? (
                   <img src={x.image} alt={x.name} />
