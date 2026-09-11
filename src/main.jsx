@@ -272,7 +272,7 @@ function Lists({ t }) {
   return (
     <div className="twoCol">
 
-      {/* CERTIFICATES */}
+      { /* CERTIFICATES */}
       <section className="section compact" id="certificates">
         <SectionHead
           icon={<Award />}
@@ -364,8 +364,9 @@ function Lists({ t }) {
         </div>
       </motion.article>
     ))}
-  </div>
-</section>
+  </section>
+
+    </div>
   );
 }
 function Resume({ t }) {
