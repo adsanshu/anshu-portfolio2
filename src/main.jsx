@@ -332,13 +332,17 @@ function Lists({ t }) {
     {portfolio.achievements.map((x) => (
       <motion.article
         className="card certificateCard"
-        key={x}
+        key={x.name}
         whileHover={{ y: -5 }}
       >
         <div className="certificateImage">
-          <div className="certificatePlaceholder">
-            <Award size={42} />
-          </div>
+          {x.image ? (
+            <img src={x.image} alt={x.name} />
+          ) : (
+            <div className="certificatePlaceholder">
+              <Award size={42} />
+            </div>
+          )}
         </div>
 
         <div className="certificateInfo">
@@ -346,7 +350,17 @@ function Lists({ t }) {
             ACHIEVEMENT
           </span>
 
-          <h3>{x}</h3>
+          <h3>{x.name}</h3>
+
+          {x.detail && (
+            <p>{x.detail}</p>
+          )}
+
+          {x.year && (
+            <span className="certificateYear">
+              {x.year}
+            </span>
+          )}
         </div>
       </motion.article>
     ))}
