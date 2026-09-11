@@ -89,7 +89,13 @@ function Hero({ t, lang }) {
     </div>
     <div className="heroVisual" aria-label="Portfolio visual placeholder">
       <div className="orbit orbitA" /><div className="orbit orbitB" /><div className="gear">⚙</div>
-      <div className="portraitPlaceholder"><strong>AK</strong><span>PROFILE PHOTO</span></div>
+      <div className="portraitPlaceholder">
+  <img
+    src="/assets/profile.jpg"
+    alt="Anshu Kumar Sharma"
+    className="hero-profile-image"
+  />
+</div>
       <div className="quoteCard">“Small<br />Steps<br /><b>Big</b><br />Dreams”</div>
       <div className="statusChip"><span /> Available for learning & opportunities</div>
     </div>
