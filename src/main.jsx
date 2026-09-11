@@ -322,23 +322,38 @@ function Lists({ t }) {
 
       {/* ACHIEVEMENTS */}
       <section className="section compact" id="achievements">
-        <SectionHead
-          icon={<Award />}
-          title={t.achievements}
-          suffix="Highlights"
-        />
+  <SectionHead
+    icon={<Award />}
+    title={t.achievements}
+    suffix="Highlights"
+  />
 
-        <div className="list">
-          {portfolio.achievements.map((x) => (
-            <div className="listItem" key={x}>
-              <Award />
-              <span>{x}</span>
-            </div>
-          ))}
+  <div className="achievementGrid">
+    {portfolio.achievements.map((x, index) => (
+      <motion.article
+        className="card achievementCard"
+        key={x}
+        whileHover={{ y: -5 }}
+      >
+        <div className="achievementNumber">
+          0{index + 1}
         </div>
-      </section>
 
-    </div>
+        <div className="achievementIcon">
+          <Award size={24} />
+        </div>
+
+        <div className="achievementContent">
+          <span className="achievementLabel">
+            ACHIEVEMENT
+          </span>
+
+          <h3>{x}</h3>
+        </div>
+      </motion.article>
+    ))}
+  </div>
+</section>
   );
 }
 function Resume({ t }) {
