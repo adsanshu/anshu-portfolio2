@@ -269,7 +269,77 @@ function Projects({ t, query }) {
 }
 
 function Lists({ t }) {
-  return <div className="twoCol"><section className="section compact" id="certificates"><SectionHead icon={<Award />} title={t.certificates} /><div className="list">{portfolio.certificates.map(x => <div className="listItem" key={x}><FileText /><span>{x}</span><ChevronRight /></div>)}</div></section><section className="section compact" id="achievements"><SectionHead icon={<Award />} title={t.achievements} /><div className="list">{portfolio.achievements.map(x => <div className="listItem" key={x}><Award /><span>{x}</span></div>)}</div></section></div>;
+  return (
+    <div className="twoCol">
+
+      {/* CERTIFICATES */}
+      <section className="section compact" id="certificates">
+        <SectionHead
+          icon={<Award />}
+          title={t.certificates}
+          suffix="Verified Learning"
+        />
+
+        <div className="certificateGrid">
+          {portfolio.certificates.map((x, index) => (
+            <motion.article
+              className="card certificateCard"
+              key={typeof x === "string" ? x : x.name}
+              whileHover={{ y: -4 }}
+            >
+              <div className="certificateIcon">
+                <Award />
+              </div>
+
+              <div className="certificateInfo">
+                <h3>
+                  {typeof x === "string" ? x : x.name}
+                </h3>
+
+                {typeof x !== "string" && x.organization && (
+                  <p>{x.organization}</p>
+                )}
+
+                {typeof x !== "string" && x.year && (
+                  <small>{x.year}</small>
+                )}
+
+                {typeof x !== "string" && x.url && (
+                  <a
+                    href={x.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="outlineBtn"
+                  >
+                    View Certificate <ExternalLink />
+                  </a>
+                )}
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </section>
+
+      {/* ACHIEVEMENTS */}
+      <section className="section compact" id="achievements">
+        <SectionHead
+          icon={<Award />}
+          title={t.achievements}
+          suffix="Highlights"
+        />
+
+        <div className="list">
+          {portfolio.achievements.map((x) => (
+            <div className="listItem" key={x}>
+              <Award />
+              <span>{x}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  );
 }
 function Resume({ t }) {
   return (
