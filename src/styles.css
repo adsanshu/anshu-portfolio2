@@ -112,3 +112,61 @@
     padding: 16px;
   }
 }
+/* EDUCATION CARDS */
+.eduCard {
+  overflow: hidden;
+  padding: 0;
+}
+
+.eduImage {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.eduImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 18px;
+  display: block;
+}
+
+.eduCard .cardKicker,
+.eduCard h3,
+.eduCard p,
+.eduCard .muted,
+.eduCard .outlineBtn {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.eduCard .cardKicker {
+  margin-top: 18px;
+}
+
+.eduCard h3 {
+  margin-bottom: 8px;
+}
+
+.eduCard p {
+  line-height: 1.5;
+}
+
+.eduCard .outlineBtn {
+  margin-top: 18px;
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 700px) {
+  .eduImage {
+    height: 130px;
+  }
+}
