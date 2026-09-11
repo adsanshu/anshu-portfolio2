@@ -142,51 +142,26 @@ export const portfolio = {
     url: ''
   }
 ],
-  <section className="section compact" id="achievements">
-  <SectionHead
-    icon={<Award />}
-    title={t.achievements}
-    suffix="Highlights"
-  />
-
-  <div className="certificateGrid">
-    {portfolio.achievements.map((x) => (
-      <motion.article
-        className="card certificateCard"
-        key={x.name}
-        whileHover={{ y: -5 }}
-      >
-        <div className="certificateImage">
-          {x.image ? (
-            <img src={x.image} alt={x.name} />
-          ) : (
-            <div className="certificatePlaceholder">
-              <Award size={42} />
-            </div>
-          )}
-        </div>
-
-        <div className="certificateInfo">
-          <span className="achievementLabel">
-            ACHIEVEMENT
-          </span>
-
-          <h3>{x.name}</h3>
-
-          {x.detail && (
-            <p>{x.detail}</p>
-          )}
-
-          {x.year && (
-            <span className="certificateYear">
-              {x.year}
-            </span>
-          )}
-        </div>
-      </motion.article>
-    ))}
-  </div>
-</section>
+  achievements: [
+  {
+    name: '4th Rank in College Mathematics Society',
+    year: '2023',
+    detail: 'Recognized for strong performance in mathematics.',
+    image: '/assets/mathematics-achievement.png'
+  },
+  {
+    name: 'SIH / Internal Hackathon Selection',
+    year: '2025',
+    detail: 'Selected through the college-level internal selection process.',
+    image: '/assets/sih-achievement.png'
+  },
+  {
+    name: 'NPTEL Product Design and Development',
+    year: '2025',
+    detail: 'Completed a 4-week NPTEL course with a score of 56%.',
+    image: '/assets/nptel-achievement.png'
+  }
+],
 };
 
 export const copy = {
