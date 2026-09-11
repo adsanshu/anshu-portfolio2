@@ -170,3 +170,42 @@
     height: 130px;
   }
 }
+/* PROFESSIONAL SKILLS */
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.skill.card {
+  padding: 18px;
+}
+
+.skillHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.skillHeader span {
+  font-weight: 600;
+}
+
+.skillHeader b {
+  font-size: 13px;
+}
+
+.skill small {
+  display: block;
+  margin-top: 9px;
+  opacity: 0.65;
+  font-size: 11px;
+}
+
+@media (max-width: 700px) {
+  .skillGrid {
+    grid-template-columns: 1fr;
+  }
+}
