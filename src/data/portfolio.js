@@ -13,34 +13,37 @@ export const portfolio = {
   instagram: 'https://instagram.com/',
   youtube: 'https://youtube.com/',
   education: [
-    {
-      title: 'Vishveshwarya Group of Institutions',
-      short: 'VGI',
-      subtitle: 'B.Tech — Mechanical Engineering',
-      detail: '2024–2028 · AKTU campus · Greater Noida, Uttar Pradesh',
-      url: 'https://www.vgi.ac.in/',
-      type: 'College',
-      mark: 'VGI'
-    },
-    {
-      title: 'Dr. A.P.J. Abdul Kalam Technical University',
-      short: 'AKTU',
-      subtitle: 'University',
-      detail: 'Lucknow, Uttar Pradesh',
-      url: 'https://aktu.ac.in/',
-      type: 'University',
-      mark: 'AKTU'
-    },
-    {
-      title: 'Bihar School Examination Board',
-      short: 'BSEB',
-      subtitle: '10th & 12th — Completed',
-      detail: 'Patna, Bihar',
-      url: 'https://www.biharboardonline.org/',
-      type: 'Board',
-      mark: 'BSEB'
-    }
-  ],
+  {
+    title: 'Vishveshwarya Group of Institutions',
+    short: 'VGI',
+    subtitle: 'B.Tech — Mechanical Engineering',
+    detail: '2024–2028 · AKTU campus · Greater Noida, Uttar Pradesh',
+    url: 'https://www.vgi.ac.in/',
+    type: 'College',
+    mark: 'VGI',
+    image: '/assets/vgi.png'
+  },
+  {
+    title: 'Dr. A.P.J. Abdul Kalam Technical University',
+    short: 'AKTU',
+    subtitle: 'University',
+    detail: 'Lucknow, Uttar Pradesh',
+    url: 'https://aktu.ac.in/',
+    type: 'University',
+    mark: 'AKTU',
+    image: '/assets/aktu.png'
+  },
+  {
+    title: 'Bihar School Examination Board',
+    short: 'BSEB',
+    subtitle: '10th & 12th — Completed',
+    detail: 'Patna, Bihar',
+    url: 'https://www.biharboardonline.org/',
+    type: 'Board',
+    mark: 'BSEB',
+    image: '/assets/bseb.png'
+  }
+],
   academics: [
     ['Semester 1', '8.58 SGPA'],
     ['Semester 2', '8.28 SGPA'],
