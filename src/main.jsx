@@ -415,21 +415,136 @@ function VoiceBar({ t, lang, speak, pause, resume, stop, speaking, paused, suppo
 }
 
 function VoiceAssistant({ t, open, setOpen, lang }) {
-  const [listening, setListening] = useState(false);
-  const [result, setResult] = useState('');
-  const recognitionRef = useRef(null);
-  const supported = typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window);
-  const start = () => {
-    if (!supported) { setResult('Speech-to-text is not supported by this browser. Try Chrome/Edge.'); return; }
-    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new Recognition();
-    recognition.lang = lang === 'Hindi' ? 'hi-IN' : 'en-IN'; recognition.interimResults = false; recognition.continuous = false;
-    recognition.onstart = () => setListening(true); recognition.onend = () => setListening(false); recognition.onerror = () => { setListening(false); setResult('Microphone access or speech recognition failed.'); };
-    recognition.onresult = (event) => setResult(event.results[0][0].transcript);
-    recognitionRef.current = recognition; recognition.start();
+  const [messages, setMessages] = React.useState([
+    {
+      role: "assistant",
+      text:
+        lang === "hi"
+          ? "नमस्ते! मैं Anshu AI हूँ। आप Anshu की education, skills, projects या certificates के बारे में पूछ सकते हैं।"
+          : "Hi! I’m Anshu AI. Ask me about Anshu’s education, skills, projects, or certificates."
+    }
+  ]);
+
+  const [input, setInput] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+
+  const askAI = async () => {
+    const message = input.trim();
+
+    if (!message || loading) return;
+
+    setMessages((prev) => [
+      ...prev,
+      { role: "user", text: message }
+    ]);
+
+    setInput("");
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "AI request failed");
+      }
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          text: data.answer
+        }
+      ]);
+    } catch (error) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          text:
+            "Sorry, AI is temporarily unavailable. Please try again."
+        }
+      ]);
+    } finally {
+      setLoading(false);
+    }
   };
-  const stop = () => recognitionRef.current?.stop();
-  return <AnimatePresence>{open && <motion.div className="panel voicePanel" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }}><div className="panelTitle"><span><Mic /> {t.voiceTitle}</span><button className="iconBtn" onClick={() => setOpen(false)}><X /></button></div><div className="wave">••• 〰〰〰 •••</div><p>{t.voiceText}</p><button className="btn primary" onClick={listening ? stop : start}><Mic /> {listening ? t.stopListening : t.startListening}</button>{result && <div className="aiResult"><small>Transcript</small><p>{result}</p></div>}</motion.div>}</AnimatePresence>;
+
+  if (!open) return null;
+
+  return (
+    <motion.div
+      className="voiceAssistantPanel"
+      initial={{ opacity: 0, y: 20, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+    >
+      <div className="voiceAssistantHeader">
+        <div>
+          <strong>Anshu AI</strong>
+          <small>Gemini AI Assistant</small>
+        </div>
+
+        <button
+          className="iconBtn"
+          onClick={() => setOpen(false)}
+          aria-label="Close AI assistant"
+        >
+          <X size={18} />
+        </button>
+      </div>
+
+      <div className="voiceAssistantMessages">
+        {messages.map((msg, index) => (
+          <div
+            key={index}
+            className={`aiMessage ${
+              msg.role === "user" ? "userMessage" : "assistantMessage"
+            }`}
+          >
+            {msg.text}
+          </div>
+        ))}
+
+        {loading && (
+          <div className="aiMessage assistantMessage">
+            Thinking...
+          </div>
+        )}
+      </div>
+
+      <div className="voiceAssistantInput">
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              askAI();
+            }
+          }}
+          placeholder={
+            lang === "hi"
+              ? "Anshu के बारे में पूछें..."
+              : "Ask about Anshu..."
+          }
+        />
+
+        <button
+          className="primaryBtn"
+          onClick={askAI}
+          disabled={loading}
+        >
+          <Send size={17} />
+        </button>
+      </div>
+    </motion.div>
+  );
 }
 
 function App() {
