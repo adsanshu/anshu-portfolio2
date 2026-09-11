@@ -328,22 +328,20 @@ function Lists({ t }) {
     suffix="Highlights"
   />
 
-  <div className="achievementGrid">
-    {portfolio.achievements.map((x, index) => (
+  <div className="certificateGrid">
+    {portfolio.achievements.map((x) => (
       <motion.article
-        className="card achievementCard"
+        className="card certificateCard"
         key={x}
         whileHover={{ y: -5 }}
       >
-        <div className="achievementNumber">
-          0{index + 1}
+        <div className="certificateImage">
+          <div className="certificatePlaceholder">
+            <Award size={42} />
+          </div>
         </div>
 
-        <div className="achievementIcon">
-          <Award size={24} />
-        </div>
-
-        <div className="achievementContent">
+        <div className="certificateInfo">
           <span className="achievementLabel">
             ACHIEVEMENT
           </span>
