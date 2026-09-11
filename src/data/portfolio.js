@@ -57,11 +57,46 @@ export const portfolio = {
     ['Firebase', 65]
   ],
   projects: [
-    { name: 'Agro-Nexa', desc: 'An app and website concept for crop/seed identification, soil and land identification, leaf disease detection, fertilizer guidance and support links.', tags: ['React', 'Firebase', 'AI concept'], icon: '🌱' },
-    { name: 'ADS Learn Academy', desc: 'Learning platform concept for Classes 10–12 with login, course access and Firebase-backed features.', tags: ['Thunkable', 'Firebase'], icon: '📚' },
-    { name: 'Chat with Anshu', desc: 'A simple web contact/chat experience designed around a Firebase backend.', tags: ['Firebase', 'Web'], icon: '💬' },
-    { name: 'Sharma Wood Mart', desc: 'Furniture catalogue and WhatsApp-order business concept focused on a simple online buying journey.', tags: ['Shopify', 'WhatsApp'], icon: '🪑' }
-  ],
+  {
+    name: 'Agro-Nexa',
+    desc: 'An app and website concept for crop/seed identification, soil and land identification, leaf disease detection, fertilizer guidance and support links.',
+    tags: ['React', 'Firebase', 'AI concept'],
+    icon: '🌱',
+    image: '/assets/agro-nexa.png',
+    demo: '',
+    github: ''
+  },
+
+  {
+    name: 'ADS Learn Academy',
+    desc: 'Learning platform concept for Classes 10–12 with login, course access and Firebase-backed features.',
+    tags: ['Thunkable', 'Firebase'],
+    icon: '📚',
+    image: '/assets/ads-learn.png',
+    demo: '',
+    github: ''
+  },
+
+  {
+    name: 'Chat with Anshu',
+    desc: 'A simple web contact/chat experience designed around a Firebase backend.',
+    tags: ['Firebase', 'Web'],
+    icon: '💬',
+    image: '/assets/chat-with-anshu.png',
+    demo: '',
+    github: ''
+  },
+
+  {
+    name: 'Sharma Wood Mart',
+    desc: 'Furniture catalogue and WhatsApp-order business concept focused on a simple online buying journey.',
+    tags: ['Shopify', 'WhatsApp'],
+    icon: '🪑',
+    image: '/assets/sharma-wood-mart.png',
+    demo: '',
+    github: ''
+  }
+],
   certificates: [
     'NPTEL — Product Design and Development (IIT Roorkee) · 4 weeks · 56% · 2025',
     'Alison — AutoCAD Certificate',
