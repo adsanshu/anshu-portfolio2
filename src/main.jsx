@@ -313,33 +313,7 @@ function Lists({ t }) {
     </a>
   )}
 </div>
-            </motion.article>
-          ))}
-        </div>
-      </section>
-
-      {/* ACHIEVEMENTS */}
-      <section className="section compact" id="achievements">
-function Lists({ t }) {
-  return (
-    <div className="twoCol">
-
-      {/* CERTIFICATES */}
-      <section className="section compact" id="certificates">
-        <SectionHead
-          icon={<Award />}
-          title={t.certificates}
-          suffix="Verified Learning"
-        />
-
-        <div className="certificateGrid">
-          {portfolio.certificates.map((x) => (
-            <motion.article
-              className="card certificateCard"
-              key={typeof x === "string" ? x : x.name}
-              whileHover={{ y: -4 }}
-            >
-function Lists({ t }) {
+            function Lists({ t }) {
   return (
     <div className="twoCol">
 
@@ -360,6 +334,25 @@ function Lists({ t }) {
             >
               <div className="certificateImage">
                 {typeof x !== "string" && x.image ? (
+                  <img src={x.image} alt={x.name} />
+                ) : (
+                  <div className="certificatePlaceholder">
+                    <Award size={42} />
+                  </div>
+                )}
+              </div>
+
+              <div className="certificateInfo">
+                <h3>
+                  {typeof x === "string" ? x : x.name}
+                </h3>
+
+                {typeof x !== "string" && x.organization && (
+                  <p>{x.organization}</p>
+                )}
+
+                {typeof x !== "string" && x.detail && (
+                  <small>{x.detail}</small>
 function Lists({ t }) {
   return (
     <div className="twoCol">
@@ -473,7 +466,7 @@ function Lists({ t }) {
 
     </div>
   );
-}
+                }
 function Resume({ t }) {
   return (
     <section className="section resume" id="resume">
