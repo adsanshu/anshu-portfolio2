@@ -47,11 +47,18 @@ function Header({ t, dark, setDark, lang, setLang, setMenu, searchOpen, setSearc
 
 function Sidebar({ t, menu, setMenu }) {
   return <aside className={`sidebar ${menu ? 'show' : ''}`}>
-    <div className="brandRow"><div className="logo"><img
-  src="/assets/profile.jpg"
-  alt="Anshu Kumar Sharma"
-  className="profile-image"
-/></div><div><strong>Anshu Kumar Sharma</strong><small>Mechanical Engineering Student</small></div><button className="iconBtn closeSide" onClick={() => setMenu(false)}><X /></button></div>
+    <div className="brandRow"><div className="logo"><button
+  type="button"
+  className="profile-image-button"
+  onClick={() => window.open("/assets/profile.jpg", "_blank")}
+  aria-label="Open profile photo"
+>
+  <img
+    src="/assets/profile.jpg"
+    alt="Anshu Kumar Sharma"
+    className="profile-image"
+  />
+</button></div><div><strong>Anshu Kumar Sharma</strong><small>Mechanical Engineering Student</small></div><button className="iconBtn closeSide" onClick={() => setMenu(false)}><X /></button></div>
     <nav>{sectionIds.map((id, i) => <a href={`#${id}`} onClick={() => setMenu(false)} key={id}>{t.nav[i]}</a>)}</nav>
     <div className="sideNote"><Code2 /><span>React Portfolio<small>Vercel-ready foundation</small></span></div>
   </aside>;
