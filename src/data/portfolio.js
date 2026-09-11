@@ -142,11 +142,51 @@ export const portfolio = {
     url: ''
   }
 ],
-  achievements: [
-    '4th Rank — College Mathematics Society, 2023',
-    '10th — BSEB · 378 marks · 2022',
-    '12th — BSEB · 388/500 · 2024'
-  ]
+  <section className="section compact" id="achievements">
+  <SectionHead
+    icon={<Award />}
+    title={t.achievements}
+    suffix="Highlights"
+  />
+
+  <div className="certificateGrid">
+    {portfolio.achievements.map((x) => (
+      <motion.article
+        className="card certificateCard"
+        key={x.name}
+        whileHover={{ y: -5 }}
+      >
+        <div className="certificateImage">
+          {x.image ? (
+            <img src={x.image} alt={x.name} />
+          ) : (
+            <div className="certificatePlaceholder">
+              <Award size={42} />
+            </div>
+          )}
+        </div>
+
+        <div className="certificateInfo">
+          <span className="achievementLabel">
+            ACHIEVEMENT
+          </span>
+
+          <h3>{x.name}</h3>
+
+          {x.detail && (
+            <p>{x.detail}</p>
+          )}
+
+          {x.year && (
+            <span className="certificateYear">
+              {x.year}
+            </span>
+          )}
+        </div>
+      </motion.article>
+    ))}
+  </div>
+</section>
 };
 
 export const copy = {
