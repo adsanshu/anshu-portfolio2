@@ -273,48 +273,46 @@ function Lists({ t }) {
     <div className="twoCol">
 
       { /* CERTIFICATES */}
-      <section className="section compact" id="certificates">
-        <SectionHead
-          icon={<Award />}
-          title={t.certificates}
-          suffix="Verified Learning"
-        />
+      <div className="certificateImage">
+  {typeof x !== "string" && x.image ? (
+    <img src={x.image} alt={x.name} />
+  ) : (
+    <div className="certificatePlaceholder">
+      <Award size={42} />
+    </div>
+  )}
+</div>
 
-        <div className="certificateGrid">
-          {portfolio.certificates.map((x, index) => (
-            <motion.article
-              className="card certificateCard"
-              key={typeof x === "string" ? x : x.name}
-              whileHover={{ y: -4 }}
-            >
-              <div className="certificateIcon">
-                <Award />
-              </div>
+<div className="certificateInfo">
+  <h3>
+    {typeof x === "string" ? x : x.name}
+  </h3>
 
-              <div className="certificateInfo">
-                <h3>
-                  {typeof x === "string" ? x : x.name}
-                </h3>
+  {typeof x !== "string" && x.organization && (
+    <p>{x.organization}</p>
+  )}
 
-                {typeof x !== "string" && x.organization && (
-                  <p>{x.organization}</p>
-                )}
+  {typeof x !== "string" && x.detail && (
+    <small>{x.detail}</small>
+  )}
 
-                {typeof x !== "string" && x.year && (
-                  <small>{x.year}</small>
-                )}
+  {typeof x !== "string" && x.year && (
+    <span className="certificateYear">
+      {x.year}
+    </span>
+  )}
 
-                {typeof x !== "string" && x.url && (
-                  <a
-                    href={x.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="outlineBtn"
-                  >
-                    View Certificate <ExternalLink />
-                  </a>
-                )}
-              </div>
+  {typeof x !== "string" && x.url && (
+    <a
+      href={x.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="outlineBtn"
+    >
+      View Certificate <ExternalLink />
+    </a>
+  )}
+</div>
             </motion.article>
           ))}
         </div>
