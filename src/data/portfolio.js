@@ -101,12 +101,47 @@ export const portfolio = {
   }
 ],
   certificates: [
-    'NPTEL — Product Design and Development (IIT Roorkee) · 4 weeks · 56% · 2025',
-    'Alison — AutoCAD Certificate',
-    'Alison — SolidWorks Certificate',
-    'Python Certificate',
-    'Internshala Participation / Learning Certificate'
-  ],
+  {
+    name: 'Product Design and Development',
+    organization: 'NPTEL — IIT Roorkee',
+    year: '2025',
+    detail: '4 weeks · Score: 56%',
+    image: '/assets/nptel-product-design.png',
+    url: ''
+  },
+  {
+    name: 'AutoCAD Certificate',
+    organization: 'Alison',
+    year: '2025',
+    detail: 'CAD & Technical Drawing',
+    image: '/assets/autocad-certificate.png',
+    url: ''
+  },
+  {
+    name: 'SolidWorks Certificate',
+    organization: 'Alison',
+    year: '2025',
+    detail: '3D CAD & Product Design',
+    image: '/assets/solidworks-certificate.png',
+    url: ''
+  },
+  {
+    name: 'Python Certificate',
+    organization: 'Python / Online Learning',
+    year: '2025',
+    detail: 'Programming Fundamentals',
+    image: '/assets/python-certificate.png',
+    url: ''
+  },
+  {
+    name: 'Participation / Learning Certificate',
+    organization: 'Internshala',
+    year: '2025',
+    detail: 'Learning & Participation',
+    image: '/assets/internshala-certificate.png',
+    url: ''
+  }
+],
   achievements: [
     '4th Rank — College Mathematics Society, 2023',
     '10th — BSEB · 378 marks · 2022',
