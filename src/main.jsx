@@ -119,10 +119,79 @@ function Skills({ t }) {
 }
 
 function Projects({ t, query }) {
-  const results = portfolio.projects.filter(p => `${p.name} ${p.desc} ${p.tags.join(' ')}`.toLowerCase().includes(query.toLowerCase()));
-  return <section className="section" id="projects"><SectionHead icon={<FolderKanban />} title={t.projects} suffix={`${results.length} ${t.projects.toLowerCase()}`} /><div className="projectGrid">
-    {results.map(p => <motion.article layout className="card projectCard" key={p.name}><div className="projectIcon">{p.icon}</div><div><h3>{p.name}</h3><p>{p.desc}</p><div className="tags">{p.tags.map(tag => <span key={tag}>{tag}</span>)}</div></div></motion.article>)}
-  </div>{!results.length && <div className="empty">{t.noResults}</div>}</section>;
+  const results = portfolio.projects.filter((p) =>
+    `${p.name} ${p.desc} ${p.tags.join(" ")}`
+      .toLowerCase()
+      .includes(query.toLowerCase())
+  );
+
+  return (
+    <section className="section" id="projects">
+      <SectionHead
+        icon={<FolderKanban />}
+        title={t.projects}
+        suffix={`${results.length} ${t.projects.toLowerCase()}`}
+      />
+
+      <div className="projectGrid">
+        {results.map((p) => (
+          <motion.article
+            layout
+            className="card projectCard"
+            key={p.name}
+          >
+            <div className="projectImage">
+              {p.image ? (
+                <img src={p.image} alt={p.name} />
+              ) : (
+                <div className="projectIconLarge">{p.icon}</div>
+              )}
+            </div>
+
+            <div className="projectContent">
+              <h3>{p.name}</h3>
+
+              <p>{p.desc}</p>
+
+              <div className="tags">
+                {p.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+
+              <div className="projectActions">
+                {p.demo && (
+                  <a
+                    href={p.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn small"
+                  >
+                    Live Demo
+                  </a>
+                )}
+
+                {p.github && (
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn small secondary"
+                  >
+                    GitHub
+                  </a>
+                )}
+              </div>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+
+      {!results.length && (
+        <div className="empty">{t.noResults}</div>
+      )}
+    </section>
+  );
 }
 
 function Lists({ t }) {
