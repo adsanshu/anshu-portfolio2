@@ -364,7 +364,8 @@ function Lists({ t }) {
         </div>
       </motion.article>
     ))}
-  </section>
+  </div>
+</section>
 
     </div>
   );
