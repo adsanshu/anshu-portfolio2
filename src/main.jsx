@@ -154,7 +154,42 @@ function Education({ t }) {
 function SectionHead({ icon, title, suffix }) { return <div className="sectionHead"><h2>{icon}{title}</h2>{suffix && <span>{suffix}</span>}</div>; }
 
 function Skills({ t }) {
-  return <section className="section" id="skills"><SectionHead icon={<Code2 />} title={t.skills} /><div className="skillGrid">{portfolio.skills.map(([name, value]) => <div className="skill" key={name}><div><span>{name}</span><b>{value}%</b></div><div className="bar"><i style={{ width: `${value}%` }} /></div></div>)}</div></section>;
+  return (
+    <section className="section" id="skills">
+      <SectionHead
+        icon={<Code2 />}
+        title={t.skills}
+        suffix="Technical & Soft Skills"
+      />
+
+      <div className="skillGrid">
+        {portfolio.skills.map(([name, value]) => (
+          <motion.div
+            className="skill card"
+            key={name}
+            whileHover={{ y: -4 }}
+          >
+            <div className="skillHeader">
+              <span>{name}</span>
+              <b>{value}%</b>
+            </div>
+
+            <div className="bar">
+              <i style={{ width: `${value}%` }} />
+            </div>
+
+            <small>
+              {value >= 80
+                ? "Advanced"
+                : value >= 60
+                ? "Intermediate"
+                : "Learning"}
+            </small>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 function Projects({ t, query }) {
