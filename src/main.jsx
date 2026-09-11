@@ -128,9 +128,25 @@ function Projects({ t, query }) {
 function Lists({ t }) {
   return <div className="twoCol"><section className="section compact" id="certificates"><SectionHead icon={<Award />} title={t.certificates} /><div className="list">{portfolio.certificates.map(x => <div className="listItem" key={x}><FileText /><span>{x}</span><ChevronRight /></div>)}</div></section><section className="section compact" id="achievements"><SectionHead icon={<Award />} title={t.achievements} /><div className="list">{portfolio.achievements.map(x => <div className="listItem" key={x}><Award /><span>{x}</span></div>)}</div></section></div>;
 }
-
 function Resume({ t }) {
-  return <section className="section resume" id="resume"><div><span className="eyebrow">CURRICULUM VITAE</span><h2>Ready to build something great together?</h2><p>{t.resumeText}</p></div><button className="btn primary" disabled title="Add your final CV PDF to enable this button"><Download /> {t.downloadResume}</button></section>;
+  return (
+    <section className="section resume" id="resume">
+      <div>
+        <span className="eyebrow">CURRICULUM VITAE</span>
+        <h2>Ready to build something great together?</h2>
+        <p>{t.resumeText}</p>
+      </div>
+
+      <a
+        className="btn primary"
+        href="/assets/resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Download /> {t.downloadResume}
+      </a>
+    </section>
+  );
 }
 
 function Contact({ t }) {
