@@ -320,50 +320,116 @@ function Lists({ t }) {
 
       {/* ACHIEVEMENTS */}
       <section className="section compact" id="achievements">
-  <SectionHead
-    icon={<Award />}
-    title={t.achievements}
-    suffix="Highlights"
-  />
+function Lists({ t }) {
+  return (
+    <div className="twoCol">
 
-  <div className="certificateGrid">
-    {portfolio.achievements.map((x) => (
-      <motion.article
-        className="card certificateCard"
-        key={x.name}
-        whileHover={{ y: -5 }}
-      >
-        <div className="certificateImage">
-          {x.image ? (
-            <img src={x.image} alt={x.name} />
-          ) : (
-            <div className="certificatePlaceholder">
-              <Award size={42} />
-            </div>
-          )}
+      {/* CERTIFICATES */}
+      <section className="section compact" id="certificates">
+        <SectionHead
+          icon={<Award />}
+          title={t.certificates}
+          suffix="Verified Learning"
+        />
+
+        <div className="certificateGrid">
+          {portfolio.certificates.map((x) => (
+            <motion.article
+              className="card certificateCard"
+              key={typeof x === "string" ? x : x.name}
+              whileHover={{ y: -4 }}
+            >
+              <div className="certificateImage">
+                {typeof x !== "string" && x.image ? (
+                  <img src={x.image} alt={x.name} />
+                ) : (
+                  <div className="certificatePlaceholder">
+                    <Award size={42} />
+                  </div>
+                )}
+              </div>
+
+              <div className="certificateInfo">
+                <h3>
+                  {typeof x === "string" ? x : x.name}
+                </h3>
+
+                {typeof x !== "string" && x.organization && (
+                  <p>{x.organization}</p>
+                )}
+
+                {typeof x !== "string" && x.detail && (
+                  <small>{x.detail}</small>
+                )}
+
+                {typeof x !== "string" && x.year && (
+                  <span className="certificateYear">
+                    {x.year}
+                  </span>
+                )}
+
+                {typeof x !== "string" && x.url && (
+                  <a
+                    href={x.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="outlineBtn"
+                  >
+                    View Certificate <ExternalLink />
+                  </a>
+                )}
+              </div>
+            </motion.article>
+          ))}
         </div>
+      </section>
 
-        <div className="certificateInfo">
-          <span className="achievementLabel">
-            ACHIEVEMENT
-          </span>
+      {/* ACHIEVEMENTS */}
+      <section className="section compact" id="achievements">
+        <SectionHead
+          icon={<Award />}
+          title={t.achievements}
+          suffix="Highlights"
+        />
 
-          <h3>{x.name}</h3>
+        <div className="certificateGrid">
+          {portfolio.achievements.map((x) => (
+            <motion.article
+              className="card certificateCard"
+              key={x.name}
+              whileHover={{ y: -5 }}
+            >
+              <div className="certificateImage">
+                {x.image ? (
+                  <img src={x.image} alt={x.name} />
+                ) : (
+                  <div className="certificatePlaceholder">
+                    <Award size={42} />
+                  </div>
+                )}
+              </div>
 
-          {x.detail && (
-            <p>{x.detail}</p>
-          )}
+              <div className="certificateInfo">
+                <span className="achievementLabel">
+                  ACHIEVEMENT
+                </span>
 
-          {x.year && (
-            <span className="certificateYear">
-              {x.year}
-            </span>
-          )}
+                <h3>{x.name}</h3>
+
+                {x.detail && (
+                  <p>{x.detail}</p>
+                )}
+
+                {x.year && (
+                  <span className="certificateYear">
+                    {x.year}
+                  </span>
+                )}
+              </div>
+            </motion.article>
+          ))}
         </div>
-      </motion.article>
-    ))}
-  </div>
-</section>
+      </section>
 
     </div>
   );
