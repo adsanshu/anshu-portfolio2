@@ -181,9 +181,9 @@ function Education({ t }) {
   variants={{
     hidden: {},
     show: {
-      transition: {
-        staggerChildren: 0.2
-      }
+  transition: {
+    staggerChildren: 0.5
+  }
     }
   }}
 >
@@ -201,8 +201,9 @@ function Education({ t }) {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6
-      }
+  duration: 1.2,
+  ease: "easeOut"
+}
     }
 }}
 >
