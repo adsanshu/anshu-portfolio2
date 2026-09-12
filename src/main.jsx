@@ -89,7 +89,17 @@ function Hero({ t, lang }) {
   transition={{ duration: 0.7, ease: "easeOut" }}
 >
       <span className="eyebrow">{t.hello}</span>
-      <h1>Anshu Kumar <span>Sharma</span></h1>
+      <motion.h1
+  animate={{ opacity: [0, 1, 1, 0] }}
+  transition={{
+    duration: 5,
+    repeat: Infinity,
+    times: [0, 0.1, 0.85, 1],
+    ease: "easeInOut"
+  }}
+>
+  Anshu Kumar <span>Sharma</span>
+</motion.h1>
       <h2>{portfolio.role} <i>·</i> {portfolio.headline}</h2>
       <p className="tagline">“{portfolio.tagline}”</p>
       <p className="intro">{lang === 'Hindi' ? 'मैं मैकेनिकल इंजीनियरिंग का छात्र हूँ और इंजीनियरिंग, कोडिंग तथा समस्या समाधान को जोड़कर व्यावहारिक प्रोजेक्ट बनाने में रुचि रखता हूँ।' : 'I am a Mechanical Engineering student interested in combining engineering, coding and problem solving to build practical projects.'}</p>
