@@ -492,7 +492,7 @@
 .bottomMenuToggle {
   position: fixed;
   right: 22px;
-  bottom: 22px;
+  top: 20px;
   z-index: 1100;
 
   width: 48px;
