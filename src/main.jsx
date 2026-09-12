@@ -120,7 +120,8 @@ useEffect(() => {
 >
       <span className="eyebrow">{t.hello}</span>
       <h1>
-  {typedName}
+  {typedName.slice(0, 12)}
+  <span>{typedName.slice(12)}</span>
   <span className="typingCursor">|</span>
 </h1>
       <h2>{portfolio.role} <i>·</i> {portfolio.headline}</h2>
