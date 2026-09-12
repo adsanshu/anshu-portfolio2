@@ -73,6 +73,36 @@ function Hero({ t, lang }) {
   "/assets/photo3.jpg"
 ];
   const [heroPhotoIndex, setHeroPhotoIndex] = useState(0);
+  const fullName = "Anshu Kumar Sharma";
+const [typedName, setTypedName] = useState("");
+const [isDeleting, setIsDeleting] = useState(false);
+
+useEffect(() => {
+  const isComplete = typedName === fullName;
+  const isEmpty = typedName === "";
+
+  const delay = isComplete
+    ? 1200
+    : isEmpty
+    ? 500
+    : isDeleting
+    ? 70
+    : 130;
+
+  const timer = setTimeout(() => {
+    if (isComplete) {
+      setIsDeleting(true);
+    } else if (isDeleting && !isEmpty) {
+      setTypedName(fullName.slice(0, typedName.length - 1));
+    } else if (!isDeleting) {
+      setTypedName(fullName.slice(0, typedName.length + 1));
+    } else {
+      setIsDeleting(false);
+    }
+  }, delay);
+
+  return () => clearTimeout(timer);
+}, [typedName, isDeleting]);
   useEffect(() => {
   const timer = setInterval(() => {
     setHeroPhotoIndex((prev) => (prev + 1) % heroPhotos.length);
@@ -89,17 +119,10 @@ function Hero({ t, lang }) {
   transition={{ duration: 0.7, ease: "easeOut" }}
 >
       <span className="eyebrow">{t.hello}</span>
-      <motion.h1
-  animate={{ opacity: [0, 1, 1, 0] }}
-  transition={{
-    duration: 5,
-    repeat: Infinity,
-    times: [0, 0.1, 0.85, 1],
-    ease: "easeInOut"
-  }}
->
-  Anshu Kumar <span>Sharma</span>
-</motion.h1>
+      <h1>
+  {typedName}
+  <span className="typingCursor">|</span>
+</h1>
       <h2>{portfolio.role} <i>·</i> {portfolio.headline}</h2>
       <p className="tagline">“{portfolio.tagline}”</p>
       <p className="intro">{lang === 'Hindi' ? 'मैं मैकेनिकल इंजीनियरिंग का छात्र हूँ और इंजीनियरिंग, कोडिंग तथा समस्या समाधान को जोड़कर व्यावहारिक प्रोजेक्ट बनाने में रुचि रखता हूँ।' : 'I am a Mechanical Engineering student interested in combining engineering, coding and problem solving to build practical projects.'}</p>
