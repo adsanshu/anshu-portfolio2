@@ -93,7 +93,14 @@ function Hero({ t, lang }) {
         <a href={`mailto:${portfolio.email}`} aria-label="Email"><Mail /></a>
       </div>
         </motion.div>
-    <div className="heroVisual" aria-label="Portfolio visual placeholder">
+    <motion.div
+  className="heroVisual"
+  aria-label="Portfolio visual placeholder"
+  initial={{ opacity: 0, scale: 0.85, x: 50 }}
+  whileInView={{ opacity: 1, scale: 1, x: 0 }}
+  viewport={{ once: true, amount: 0.3 }}
+  transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+>
       <div className="orbit orbitA" /><div className="orbit orbitB" /><div className="gear">⚙</div>
       <div className="portraitPlaceholder">
   <img
@@ -104,7 +111,7 @@ function Hero({ t, lang }) {
 </div>
       <div className="quoteCard">“Small<br />Steps<br /><b>Big</b><br />Dreams”</div>
       <div className="statusChip"><span /> Available for learning & opportunities</div>
-    </div>
+        </motion.div>
   </section>;
 }
 
