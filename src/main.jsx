@@ -766,6 +766,26 @@ function VoiceAssistant({ t, open, setOpen, lang }) {
     </AnimatePresence>
   );
 }
+function BottomMenu() {
+  const items = [
+    { id: "about", label: "Home", icon: "🏠" },
+    { id: "poems", label: "Poems", icon: "📖" },
+    { id: "research", label: "Research", icon: "🔬" },
+    { id: "ideas", label: "Ideas", icon: "💡" },
+    { id: "library", label: "Library", icon: "📚" }
+  ];
+
+  return (
+    <nav className="bottomMenu">
+      {items.map((item) => (
+        <a key={item.id} href={`#${item.id}`}>
+          <span>{item.icon}</span>
+          <small>{item.label}</small>
+        </a>
+      ))}
+    </nav>
+  );
+}
 function App() {
   const [dark, setDark] = useState(() => localStorage.getItem('portfolio-theme') !== 'light');
   const [lang, setLang] = useState('English');
@@ -794,6 +814,7 @@ function App() {
     <div className="floatingTools"><button onClick={() => setVoiceOpen(v => !v)} title={t.voiceTitle}><Mic /></button><a href={`https://wa.me/${portfolio.whatsapp}`} target="_blank" rel="noreferrer" title="WhatsApp"><MessageCircle /></a></div>
     <VoiceAssistant t={t} open={voiceOpen} setOpen={setVoiceOpen} lang={lang} />
     <VoiceBar t={t} lang={lang} speak={speak} pause={pause} resume={resume} stop={stop} speaking={speaking} paused={paused} supported={supported} pageText={pageText} />
+    <BottomMenu />
   </div>;
 }
 
