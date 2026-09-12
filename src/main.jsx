@@ -173,9 +173,39 @@ function Education({ t }) {
         suffix={t.official}
       />
 
-      <div className="eduGrid">
+      <motion.div
+  className="eduGrid"
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: true, amount: 0.2 }}
+  variants={{
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  }}
+>
         {portfolio.education.map((e) => (
-          <article className="card eduCard" key={e.title}>
+          <motion.article
+  className="card eduCard"
+  key={e.title}
+    whileHover={{ y: -8, scale: 1.02 }}
+    variants={{
+    hidden: {
+      opacity: 0,
+      y: 40
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6
+      }
+    }
+}}
+>
 
             <div className="eduImage">
               {e.image ? (
@@ -206,9 +236,9 @@ function Education({ t }) {
               <ExternalLink />
             </a>
 
-          </article>
+          </motion.article>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
