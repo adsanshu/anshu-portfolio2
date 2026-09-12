@@ -817,9 +817,9 @@ function App() {
     <button
   className="bottomMenuToggle"
   onClick={() => setMenu(v => !v)}
-  title="Menu"
+  title="Explore"
 >
-  ☰
+  ✦
 </button>
 
 {menu && <BottomMenu />}
