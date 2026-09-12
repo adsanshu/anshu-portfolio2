@@ -766,6 +766,58 @@ function VoiceAssistant({ t, open, setOpen, lang }) {
     </AnimatePresence>
   );
 }
+function ExplorePage({ onBack }) {
+  return (
+    <div className="explorePage">
+      
+      <button className="exploreBack" onClick={onBack}>
+        ← Back
+      </button>
+
+      <div className="exploreHeader">
+        <span className="eyebrow">ANSHU'S WORLD</span>
+        <h1>Explore</h1>
+        <p>
+          Explore my poems, research, ideas and personal library.
+        </p>
+      </div>
+
+      <nav className="exploreMenu">
+        <a href="#explore-home">🏠 Home</a>
+        <a href="#explore-poems">📖 Poems</a>
+        <a href="#explore-research">🔬 Research</a>
+        <a href="#explore-ideas">💡 Ideas</a>
+        <a href="#explore-library">📚 Library</a>
+      </nav>
+
+      <section id="explore-home" className="exploreContent">
+        <h2>🏠 Home</h2>
+        <p>Welcome to Anshu's personal creative space.</p>
+      </section>
+
+      <section id="explore-poems" className="exploreContent">
+        <h2>📖 Poems</h2>
+        <p>My original poetry collection will appear here.</p>
+      </section>
+
+      <section id="explore-research" className="exploreContent">
+        <h2>🔬 Research</h2>
+        <p>Research ideas and technology concepts will appear here.</p>
+      </section>
+
+      <section id="explore-ideas" className="exploreContent">
+        <h2>💡 Ideas</h2>
+        <p>My inventions, startup ideas and future concepts.</p>
+      </section>
+
+      <section id="explore-library" className="exploreContent">
+        <h2>📚 Library</h2>
+        <p>All creative and research work in one place.</p>
+      </section>
+
+    </div>
+  );
+}
 function BottomMenu() {
   const items = [
     { id: "about", label: "Home", icon: "🏠" },
@@ -804,6 +856,10 @@ function App() {
     ? 'नमस्ते, मैं अंशु कुमार शर्मा हूँ। मैं मैकेनिकल इंजीनियरिंग का छात्र हूँ। यह पोर्टफोलियो मेरी शिक्षा, कौशल, प्रोजेक्ट, प्रमाणपत्र और उपलब्धियों के बारे में है।'
     : 'Hello, I am Anshu Kumar Sharma. I am a Mechanical Engineering student. This portfolio presents my education, skills, projects, certificates and achievements.', [lang]);
   return <div className="app">
+    {exploreOpen ? (
+  <ExplorePage onBack={() => setExploreOpen(false)} />
+) : (
+  <>
     <Sidebar t={t} menu={menu} setMenu={setMenu} />
     <main><Header t={t} dark={dark} setDark={setDark} lang={lang} setLang={setLang} setMenu={setMenu} searchOpen={searchOpen} setSearchOpen={setSearchOpen} />
       <AnimatePresence>{searchOpen && <motion.div className="searchBar" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}><Search /><input autoFocus value={query} onChange={e => setQuery(e.target.value)} placeholder={t.searchPlaceholder} /><button onClick={() => { setQuery(''); setSearchOpen(false); }}><X /></button></motion.div>}</AnimatePresence>
@@ -824,7 +880,9 @@ function App() {
 </button>
 
 {exploreOpen && <BottomMenu />}
-  </div>;
+    </>
+)}
+</div>;
 }
 
 createRoot(document.getElementById('root')).render(<App />);
