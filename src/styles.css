@@ -347,3 +347,22 @@
     font-size: 14px;
   }
 }
+.aiMessageContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.aiSpeakBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px 4px;
+  opacity: 0.75;
+}
+
+.aiSpeakBtn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
