@@ -68,7 +68,13 @@ function Hero({ t, lang }) {
   const message = encodeURIComponent('Hello Anshu, I visited your portfolio and would like to connect with you.');
   const wa = `https://wa.me/${portfolio.whatsapp}?text=${message}`;
   return <section className="hero section" id="about">
-    <div className="heroCopy">
+    <motion.div
+  className="heroCopy"
+  initial={{ opacity: 0, x: -50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true, amount: 0.3 }}
+  transition={{ duration: 0.7, ease: "easeOut" }}
+>
       <span className="eyebrow">{t.hello}</span>
       <h1>Anshu Kumar <span>Sharma</span></h1>
       <h2>{portfolio.role} <i>·</i> {portfolio.headline}</h2>
@@ -86,7 +92,7 @@ function Hero({ t, lang }) {
         <a href={portfolio.youtube} target="_blank" rel="noreferrer" aria-label="YouTube"><Youtube /></a>
         <a href={`mailto:${portfolio.email}`} aria-label="Email"><Mail /></a>
       </div>
-    </div>
+        </motion.div>
     <div className="heroVisual" aria-label="Portfolio visual placeholder">
       <div className="orbit orbitA" /><div className="orbit orbitB" /><div className="gear">⚙</div>
       <div className="portraitPlaceholder">
