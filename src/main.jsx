@@ -78,28 +78,25 @@ const [typedName, setTypedName] = useState("");
 const [isDeleting, setIsDeleting] = useState(false);
 
 useEffect(() => {
-  const isComplete = typedName === fullName;
-  const isEmpty = typedName === "";
-
-  const delay = isComplete
-    ? 1200
-    : isEmpty
-    ? 500
-    : isDeleting
-    ? 70
-    : 130;
-
   const timer = setTimeout(() => {
-    if (isComplete) {
-      setIsDeleting(true);
-    } else if (isDeleting && !isEmpty) {
-      setTypedName(fullName.slice(0, typedName.length - 1));
-    } else if (!isDeleting) {
-      setTypedName(fullName.slice(0, typedName.length + 1));
+    if (!isDeleting) {
+      // Typing
+      if (typedName.length < fullName.length) {
+        setTypedName(fullName.slice(0, typedName.length + 1));
+      } else {
+        // Full name complete → start deleting
+        setIsDeleting(true);
+      }
     } else {
-      setIsDeleting(false);
+      // Deleting
+      if (typedName.length > 0) {
+        setTypedName(fullName.slice(0, typedName.length - 1));
+      } else {
+        // Empty → start typing again
+        setIsDeleting(false);
+      }
     }
-  }, delay);
+  }, !isDeleting ? 130 : 70);
 
   return () => clearTimeout(timer);
 }, [typedName, isDeleting]);
