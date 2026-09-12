@@ -67,6 +67,19 @@ function Sidebar({ t, menu, setMenu }) {
 function Hero({ t, lang }) {
   const message = encodeURIComponent('Hello Anshu, I visited your portfolio and would like to connect with you.');
   const wa = `https://wa.me/${portfolio.whatsapp}?text=${message}`;
+  const heroPhotos = [
+  "/assets/profile.jpg",
+  "/assets/photo2.jpg",
+  "/assets/photo3.jpg"
+];
+  const [heroPhotoIndex, setHeroPhotoIndex] = useState(0);
+  useEffect(() => {
+  const timer = setInterval(() => {
+    setHeroPhotoIndex((prev) => (prev + 1) % heroPhotos.length);
+  }, 3500);
+
+  return () => clearInterval(timer);
+}, []);
   return <section className="hero section" id="about">
     <motion.div
   className="heroCopy"
@@ -102,13 +115,49 @@ function Hero({ t, lang }) {
   transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
 >
       <div className="orbit orbitA" /><div className="orbit orbitB" /><div className="gear">⚙</div>
-      <div className="portraitPlaceholder">
-  <img
-    src="/assets/profile.jpg"
-    alt="Anshu Kumar Sharma"
-    className="hero-profile-image"
-  />
-</div>
+      <motion.div
+  className="portraitPlaceholder"
+  animate={{ y: [0, -10, 0] }}
+  transition={{
+    duration: 4,
+    repeat: Infinity,
+    ease: "easeInOut"
+  }}
+>
+  <AnimatePresence mode="wait">
+    <motion.img
+     key={heroPhotos[heroPhotoIndex]}
+     src={heroPhotos[heroPhotoIndex]}
+      alt="Anshu Kumar Sharma"
+      className="hero-profile-image"
+      initial={{
+  opacity: 0,
+  scale: 0.7,
+  x: 80,
+  y: 40,
+  rotate: 25
+}}
+animate={{
+  opacity: 1,
+  scale: 1,
+  x: 0,
+  y: 0,
+  rotate: 0
+}}
+exit={{
+  opacity: 0,
+  scale: 0.7,
+  x: -80,
+  y: -40,
+  rotate: -25
+}}
+transition={{
+  duration: 1.2,
+  ease: "easeInOut"
+}}
+    />
+  </AnimatePresence>
+</motion.div>
       <div className="quoteCard">“Small<br />Steps<br /><b>Big</b><br />Dreams”</div>
       <div className="statusChip"><span /> Available for learning & opportunities</div>
         </motion.div>
