@@ -790,6 +790,7 @@ function App() {
   const [dark, setDark] = useState(() => localStorage.getItem('portfolio-theme') !== 'light');
   const [lang, setLang] = useState('English');
   const [menu, setMenu] = useState(false);
+  const [exploreOpen, setExploreOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [voiceOpen, setVoiceOpen] = useState(false);
@@ -816,13 +817,13 @@ function App() {
     <VoiceBar t={t} lang={lang} speak={speak} pause={pause} resume={resume} stop={stop} speaking={speaking} paused={paused} supported={supported} pageText={pageText} />
     <button
   className="bottomMenuToggle"
-  onClick={() => setMenu(v => !v)}
+  onClick={() => setExploreOpen(v => !v)}
   title="Explore"
 >
   ✦
 </button>
 
-{menu && <BottomMenu />}
+{exploreOpen && <BottomMenu />}
   </div>;
 }
 
