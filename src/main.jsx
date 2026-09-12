@@ -460,13 +460,13 @@ function VoiceAssistant({ t, open, setOpen, lang }) {
         }
       ]);
     } catch (error) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: 'assistant',
-          text: 'Sorry, AI is temporarily unavailable.'
-        }
-      ]);
+  setMessages((prev) => [
+    ...prev,
+    {
+      role: 'assistant',
+      text: `AI Error: ${error.message}`
+    }
+  ]);
     }
   };
 
