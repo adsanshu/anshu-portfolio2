@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  Award, ChevronRight, Code2, Download, ExternalLink, FileText, FolderKanban, GraduationCap,
+  Award, Bot, ChevronRight, Code2, Download, ExternalLink, FileText, FolderKanban, GraduationCap,
   Github, Globe, Instagram, Languages, Linkedin, Mail, Menu, MessageCircle, Mic, Moon,
   Pause, Play, Search, Send, Square, Sun, Volume2, X, Youtube
 } from 'lucide-react';
@@ -424,6 +424,19 @@ function VoiceAssistant({ t, open, setOpen, lang }) {
     typeof window !== 'undefined' &&
     ('SpeechRecognition' in window ||
       'webkitSpeechRecognition' in window);
+  const speakAnswer = (text) => {
+  if (!('speechSynthesis' in window)) return;
+
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+
+  utterance.lang = lang === 'Hindi' ? 'hi-IN' : 'en-IN';
+  utterance.rate = 0.95;
+  utterance.pitch = 1;
+
+  window.speechSynthesis.speak(utterance);
+};
 
   const askAI = async (question) => {
     const message = question.trim();
@@ -535,7 +548,7 @@ function VoiceAssistant({ t, open, setOpen, lang }) {
         >
           <div className="panelTitle">
             <span>
-              <Mic /> Anshu AI
+              <Bot /> Anshu AI
             </span>
 
             <button
@@ -562,7 +575,19 @@ function VoiceAssistant({ t, open, setOpen, lang }) {
                     : 'aiBotMessage'
                 }
               >
-                {msg.text}
+                <div className="aiMessageContent">
+  {msg.text}
+
+  {msg.role === 'assistant' && (
+    <button
+      className="aiSpeakBtn"
+      onClick={() => speakAnswer(msg.text)}
+      title="Listen"
+    >
+      🔊
+    </button>
+  )}
+</div>
               </div>
             ))}
           </div>
