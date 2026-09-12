@@ -814,7 +814,15 @@ function App() {
     <div className="floatingTools"><button onClick={() => setVoiceOpen(v => !v)} title={t.voiceTitle}><Mic /></button><a href={`https://wa.me/${portfolio.whatsapp}`} target="_blank" rel="noreferrer" title="WhatsApp"><MessageCircle /></a></div>
     <VoiceAssistant t={t} open={voiceOpen} setOpen={setVoiceOpen} lang={lang} />
     <VoiceBar t={t} lang={lang} speak={speak} pause={pause} resume={resume} stop={stop} speaking={speaking} paused={paused} supported={supported} pageText={pageText} />
-    <BottomMenu />
+    <button
+  className="bottomMenuToggle"
+  onClick={() => setMenu(v => !v)}
+  title="Menu"
+>
+  ☰
+</button>
+
+{menu && <BottomMenu />}
   </div>;
 }
 
