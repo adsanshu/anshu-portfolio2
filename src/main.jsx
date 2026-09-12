@@ -767,78 +767,8 @@ function VoiceAssistant({ t, open, setOpen, lang }) {
     </AnimatePresence>
   );
 }
-function ExplorePage({ onBack }) {
-  return (
-    <div className="explorePage">
-      
-      <button className="exploreBack" onClick={onBack}>
-        ← Back
-      </button>
-
-      <div className="exploreHeader">
-        <span className="eyebrow">ANSHU'S WORLD</span>
-        <h1>Explore</h1>
-        <p>
-          Explore my poems, research, ideas and personal library.
-        </p>
-      </div>
-
-      <nav className="exploreMenu">
-        <a href="#explore-home">🏠 Home</a>
-        <a href="#explore-poems">📖 Poems</a>
-        <a href="#explore-research">🔬 Research</a>
-        <a href="#explore-ideas">💡 Ideas</a>
-        <a href="#explore-library">📚 Library</a>
-      </nav>
-
-      <section id="explore-home" className="exploreContent">
-        <h2>🏠 Home</h2>
-        <p>Welcome to Anshu's personal creative space.</p>
-      </section>
-
-      <section id="explore-poems" className="exploreContent">
-        <h2>📖 Poems</h2>
-        <p>My original poetry collection will appear here.</p>
-      </section>
-
-      <section id="explore-research" className="exploreContent">
-        <h2>🔬 Research</h2>
-        <p>Research ideas and technology concepts will appear here.</p>
-      </section>
-
-      <section id="explore-ideas" className="exploreContent">
-        <h2>💡 Ideas</h2>
-        <p>My inventions, startup ideas and future concepts.</p>
-      </section>
-
-      <section id="explore-library" className="exploreContent">
-        <h2>📚 Library</h2>
-        <p>All creative and research work in one place.</p>
-      </section>
-
-    </div>
-  );
-}
-function BottomMenu() {
-  const items = [
-    { id: "about", label: "Home", icon: "🏠" },
-    { id: "poems", label: "Poems", icon: "📖" },
-    { id: "research", label: "Research", icon: "🔬" },
-    { id: "ideas", label: "Ideas", icon: "💡" },
-    { id: "library", label: "Library", icon: "📚" }
-  ];
-
-  return (
-    <nav className="bottomMenu">
-      {items.map((item) => (
-        <a key={item.id} href={`#${item.id}`}>
-          <span>{item.icon}</span>
-          <small>{item.label}</small>
-        </a>
-      ))}
-    </nav>
-  );
-}
+ 
+ 
 function App() {
   const [dark, setDark] = useState(() => localStorage.getItem('portfolio-theme') !== 'light');
   const [lang, setLang] = useState('English');
