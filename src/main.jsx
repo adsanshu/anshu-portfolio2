@@ -258,10 +258,14 @@ function Skills({ t }) {
       <div className="skillGrid">
         {portfolio.skills.map(([name, value]) => (
           <motion.div
-            className="skill card"
-            key={name}
-            whileHover={{ y: -4 }}
-          >
+  className="skill card"
+  key={name}
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+  whileHover={{ y: -4 }}
+>
             <div className="skillHeader">
               <span>{name}</span>
               <b>{value}%</b>
@@ -303,10 +307,14 @@ function Projects({ t, query }) {
       <div className="projectGrid">
         {results.map((p) => (
           <motion.article
-            layout
-            className="card projectCard"
-            key={p.name}
-          >
+  layout
+  className="card projectCard"
+  key={p.name}
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 0.9, ease: "easeOut" }}
+>
             <div className="projectImage">
               {p.image ? (
                 <img src={p.image} alt={p.name} />
