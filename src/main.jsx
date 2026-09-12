@@ -383,10 +383,14 @@ function Lists({ t }) {
         <div className="certificateGrid">
           {portfolio.certificates.map((x) => (
             <motion.article
-              className="card certificateCard"
-              key={typeof x === "string" ? x : x.name}
-              whileHover={{ y: -4 }}
-            >
+  className="card certificateCard"
+  key={typeof x === "string" ? x : x.name}
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 1, ease: "easeOut" }}
+  whileHover={{ y: -4 }}
+>
               <div className="certificateImage">
                 {typeof x !== "string" && x.image ? (
                   <img src={x.image} alt={x.name} />
@@ -443,10 +447,14 @@ function Lists({ t }) {
         <div className="certificateGrid">
           {portfolio.achievements.map((x) => (
             <motion.article
-              className="card certificateCard"
-              key={x.name}
-              whileHover={{ y: -5 }}
-            >
+  className="card certificateCard"
+  key={x.name}
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 1, ease: "easeOut" }}
+  whileHover={{ y: -5 }}
+>
               <div className="certificateImage">
                 {x.image ? (
                   <img src={x.image} alt={x.name} />
