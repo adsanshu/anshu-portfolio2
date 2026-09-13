@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function ExplorePage({ onBack }) {
   const [active, setActive] = useState("home");
   const [selectedPoem, setSelectedPoem] = useState(null);
+  const [currentPoemIndex, setCurrentPoemIndex] = useState(0);
 const poemParts = [
   {
     id: 1,
@@ -180,6 +181,7 @@ const poemParts = [
     ]
   }
 ];
+  const allPoems = poemParts.flatMap((part) => part.units);
   const menuItems = [
     { id: "home", label: "Home", icon: "🏠" },
     { id: "poems", label: "Poems", icon: "📖" },
@@ -233,66 +235,73 @@ const poemParts = [
         {active === "poems" && (
   <div className="poemsSection">
 
-    <div className="poemsIntro">
-      <span className="poemsLabel">
-        ✍️ ORIGINAL POETRY COLLECTION
-      </span>
+    {!selectedPoem && (
+      <>
+        <div className="poemsIntro">
+          <span className="poemsLabel">
+            ✍️ ORIGINAL POETRY COLLECTION
+          </span>
 
-      <h2>📖 मन के अनकहे स्वर</h2>
+          <h2>📖 मन के अनकहे स्वर</h2>
 
-      <p>
-        प्रेम, विरह, तन्हाई, दर्द, यादों और जीवन
-        के अनकहे एहसासों की यात्रा।
-      </p>
-    </div>
+          <p>
+            प्रेम, विरह, तन्हाई, दर्द, यादों और जीवन
+            के अनकहे एहसासों की यात्रा।
+          </p>
+        </div>
 
-    <div className="poemParts">
+        <div className="poemParts">
 
-      {poemParts.map((part) => (
-        <details
-          className="poemPart"
-          key={part.id}
-        >
+          {poemParts.map((part) => (
+            <details
+              className="poemPart"
+              key={part.id}
+            >
 
-          <summary className="partButton">
-            <span>
-              {part.icon} Part {part.id} — {part.title}
-            </span>
-
-            <span>＋</span>
-          </summary>
-
-          <div className="unitList">
-
-            {part.units.map((unit, index) => (
-              <button
-                type="button"
-                className="unitItem"
-                key={unit.id}
-                onClick={(event) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  setSelectedPoem(unit);
-                }}
-              >
-
-                <span>📄</span>
-
+              <summary className="partButton">
                 <span>
-                  Unit {index + 1} — {unit.title}
+                  {part.icon} Part {part.id} — {part.title}
                 </span>
 
-                <span>→</span>
+                <span>＋</span>
+              </summary>
 
-              </button>
-            ))}
+              <div className="unitList">
 
-          </div>
+                {part.units.map((unit, index) => (
+                  <button
+                    type="button"
+                    className="unitItem"
+                    key={unit.id}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      setCurrentPoemIndex(
+  allPoems.findIndex((poem) => poem.id === unit.id)
+);
+setSelectedPoem(unit);
+                    }}
+                  >
 
-        </details>
-      ))}
+                    <span>📄</span>
 
-    </div>
+                    <span>
+                      Unit {index + 1} — {unit.title}
+                    </span>
+
+                    <span>→</span>
+
+                  </button>
+                ))}
+
+              </div>
+
+            </details>
+          ))}
+
+        </div>
+      </>
+    )}
 
     {selectedPoem && (
       <div className="poemDisplay">
@@ -330,6 +339,20 @@ const poemParts = [
 
         </div>
 
+        <button
+  type="button"
+  className="poemNext"
+  onClick={() => {
+    const nextIndex = currentPoemIndex + 1;
+
+    if (nextIndex < allPoems.length) {
+      setCurrentPoemIndex(nextIndex);
+      setSelectedPoem(allPoems[nextIndex]);
+    }
+  }}
+>
+  Next →
+</button>
       </div>
     )}
 
