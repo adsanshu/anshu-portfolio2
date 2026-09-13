@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/research.css";
+import "../research.css";
 
 function ResearchPage() {
   return (
