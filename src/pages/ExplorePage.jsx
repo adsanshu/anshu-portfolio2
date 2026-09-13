@@ -5,6 +5,7 @@ export default function ExplorePage({ onBack }) {
   const [active, setActive] = useState("home");
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [partOpen, setPartOpen] = useState(null);
+  const [selectedResearch, setSelectedResearch] = useState(null);
 const speakPoem = (text) => {
   if (!("speechSynthesis" in window)) return;
 
@@ -325,141 +326,326 @@ const stopPoem = () => {
       {active === "research" && (
   <main className="exploreContent researchSection">
 
-    <div className="researchIntro">
-      <span className="researchLabel">🔬 ENGINEERING & FUTURE TECHNOLOGY</span>
-      <h2>Research & Discoveries</h2>
-      <p>
-        Simple explanations of engineering concepts, scientific ideas
-        and technologies that may shape the future.
-      </p>
-    </div>
+    {!selectedResearch ? (
+      <>
+        <div className="researchIntro">
+          <span className="researchLabel">
+            🔬 ENGINEERING & FUTURE TECHNOLOGY
+          </span>
 
-    <div className="researchGrid">
+          <h2>Research & Discoveries</h2>
 
-      <article className="researchCard">
-        <div className="researchImage">
-          <img src="/assets/research-laser.jpg" alt="Laser Propulsion" />
-          <span>SPACE TECHNOLOGY</span>
+          <p>
+            Simple explanations of engineering concepts, scientific ideas
+            and technologies that may shape the future.
+          </p>
         </div>
 
-        <div className="researchBody">
-          <h3>🚀 Laser Propulsion</h3>
+        <div className="researchGrid">
+
+          {/* LASER PROPULSION */}
+
+          <article className="researchCard">
+
+            <div className="researchImage">
+              <img
+                src="/assets/research-laser.jpg"
+                alt="Laser Propulsion"
+              />
+              <span>SPACE TECHNOLOGY</span>
+            </div>
+
+            <div className="researchBody">
+
+              <h3>🚀 Laser Propulsion</h3>
+
+              <p>
+                Exploring how powerful laser beams could push spacecraft
+                without carrying traditional fuel.
+              </p>
+
+              <div className="researchFacts">
+
+                <div>
+                  <small>FIELD</small>
+                  <strong>Space Engineering</strong>
+                </div>
+
+                <div>
+                  <small>STATUS</small>
+                  <strong>Research Idea</strong>
+                </div>
+
+              </div>
+
+              <button
+                className="researchButton"
+                onClick={() => setSelectedResearch("laser")}
+              >
+                Explore Research →
+              </button>
+
+            </div>
+          </article>
+
+
+          {/* SPACE ENERGY */}
+
+          <article className="researchCard">
+
+            <div className="researchImage">
+              <img
+                src="/assets/research-energy.jpg"
+                alt="Space Energy Transfer"
+              />
+              <span>ENERGY SYSTEMS</span>
+            </div>
+
+            <div className="researchBody">
+
+              <h3>⚡ Space Energy Transfer</h3>
+
+              <p>
+                Studying how energy might be transferred across very large
+                distances using electromagnetic systems.
+              </p>
+
+              <div className="researchFacts">
+
+                <div>
+                  <small>FIELD</small>
+                  <strong>Energy Engineering</strong>
+                </div>
+
+                <div>
+                  <small>STATUS</small>
+                  <strong>Concept Study</strong>
+                </div>
+
+              </div>
+
+              <button className="researchButton">
+                Explore Research →
+              </button>
+
+            </div>
+          </article>
+
+
+          {/* AI + MECHANICAL */}
+
+          <article className="researchCard">
+
+            <div className="researchImage">
+              <img
+                src="/assets/research-ai.jpg"
+                alt="AI Mechanical Engineering"
+              />
+              <span>SMART ENGINEERING</span>
+            </div>
+
+            <div className="researchBody">
+
+              <h3>🤖 AI + Mechanical Engineering</h3>
+
+              <p>
+                Exploring how artificial intelligence can improve design,
+                manufacturing, automation and engineering decisions.
+              </p>
+
+              <div className="researchFacts">
+
+                <div>
+                  <small>FIELD</small>
+                  <strong>Mechanical + AI</strong>
+                </div>
+
+                <div>
+                  <small>STATUS</small>
+                  <strong>Exploration</strong>
+                </div>
+
+              </div>
+
+              <button className="researchButton">
+                Explore Research →
+              </button>
+
+            </div>
+          </article>
+
+
+          {/* INTERSTELLAR */}
+
+          <article className="researchCard">
+
+            <div className="researchImage">
+              <img
+                src="/assets/research-interstellar.jpg"
+                alt="Interstellar Propulsion"
+              />
+              <span>FUTURE SPACE</span>
+            </div>
+
+            <div className="researchBody">
+
+              <h3>🌌 Interstellar Propulsion</h3>
+
+              <p>
+                Thinking about future propulsion systems that could make
+                deep-space and interstellar missions possible.
+              </p>
+
+              <div className="researchFacts">
+
+                <div>
+                  <small>FIELD</small>
+                  <strong>Space Propulsion</strong>
+                </div>
+
+                <div>
+                  <small>STATUS</small>
+                  <strong>Future Concept</strong>
+                </div>
+
+              </div>
+
+              <button className="researchButton">
+                Explore Research →
+              </button>
+
+            </div>
+          </article>
+
+        </div>
+      </>
+    ) : (
+
+      /* RESEARCH DETAIL */
+
+      <motion.article
+        className="researchDetail"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+
+        <button
+          className="researchBack"
+          onClick={() => setSelectedResearch(null)}
+        >
+          ← Back to Research
+        </button>
+
+        <span className="researchDetailLabel">
+          🚀 SPACE TECHNOLOGY
+        </span>
+
+        <h2>Laser Propulsion</h2>
+
+        <p className="researchDetailIntro">
+          A future propulsion concept where external laser energy
+          provides momentum to a spacecraft, reducing the need to
+          carry large amounts of onboard propellant.
+        </p>
+
+
+        <div className="researchDetailImage">
+          <img
+            src="/assets/research-laser.jpg"
+            alt="Laser Propulsion Research"
+          />
+        </div>
+
+
+        <div className="researchInfoGrid">
+
+          <section>
+            <span>01</span>
+            <h3>🔎 Problem</h3>
+            <p>
+              Conventional spacecraft must carry their own propellant.
+              Fuel adds mass and limits how much useful payload a
+              spacecraft can carry.
+            </p>
+          </section>
+
+
+          <section>
+            <span>02</span>
+            <h3>💡 Basic Idea</h3>
+            <p>
+              A powerful laser system located away from the spacecraft
+              could transfer energy and momentum to a lightweight
+              spacecraft.
+            </p>
+          </section>
+
+
+          <section>
+            <span>03</span>
+            <h3>⚙️ How It Works</h3>
+            <p>
+              Laser light is directed toward a reflective sail.
+              The interaction between light and the sail produces
+              radiation pressure that can accelerate the spacecraft.
+            </p>
+          </section>
+
+
+          <section>
+            <span>04</span>
+            <h3>🧪 Scientific Principle</h3>
+            <p>
+              Electromagnetic radiation carries momentum. When light
+              interacts with a reflective surface, some of that momentum
+              can produce a small pushing force.
+            </p>
+          </section>
+
+
+          <section>
+            <span>05</span>
+            <h3>✅ Advantages</h3>
+            <p>
+              The spacecraft may need less onboard propellant,
+              potentially reducing launch mass and enabling very high
+              speeds over long acceleration periods.
+            </p>
+          </section>
+
+
+          <section>
+            <span>06</span>
+            <h3>⚠️ Challenges</h3>
+            <p>
+              Extremely powerful laser systems, precise beam control,
+              thermal management and maintaining acceleration over
+              large distances are major engineering challenges.
+            </p>
+          </section>
+
+        </div>
+
+
+        <div className="researchFuture">
+
+          <span>🚀 FUTURE POSSIBILITY</span>
+
+          <h3>Where could this lead?</h3>
+
           <p>
-            Exploring how powerful laser beams could push spacecraft
-            without carrying traditional fuel.
+            Advanced laser propulsion concepts could contribute to
+            future high-speed space missions. Research is still required
+            to solve the major engineering and energy challenges.
           </p>
 
-          <div className="researchFacts">
-            <div>
-              <small>FIELD</small>
-              <strong>Space Engineering</strong>
-            </div>
-            <div>
-              <small>STATUS</small>
-              <strong>Research Idea</strong>
-            </div>
-          </div>
-
-          <button className="researchButton">
-            Explore Research →
-          </button>
-        </div>
-      </article>
-
-
-      <article className="researchCard">
-        <div className="researchImage">
-          <img src="/assets/research-energy.jpg" alt="Space Energy Transfer" />
-          <span>ENERGY SYSTEMS</span>
         </div>
 
-        <div className="researchBody">
-          <h3>⚡ Space Energy Transfer</h3>
-          <p>
-            Studying how energy might be transferred across very large
-            distances using electromagnetic systems.
-          </p>
+      </motion.article>
 
-          <div className="researchFacts">
-            <div>
-              <small>FIELD</small>
-              <strong>Energy Engineering</strong>
-            </div>
-            <div>
-              <small>STATUS</small>
-              <strong>Concept Study</strong>
-            </div>
-          </div>
+    )}
 
-          <button className="researchButton">
-            Explore Research →
-          </button>
-        </div>
-      </article>
-
-
-      <article className="researchCard">
-        <div className="researchImage">
-          <img src="/assets/research-ai.jpg" alt="AI Mechanical Engineering" />
-          <span>SMART ENGINEERING</span>
-        </div>
-
-        <div className="researchBody">
-          <h3>🤖 AI + Mechanical Engineering</h3>
-          <p>
-            Exploring how artificial intelligence can improve design,
-            manufacturing, automation and engineering decisions.
-          </p>
-
-          <div className="researchFacts">
-            <div>
-              <small>FIELD</small>
-              <strong>Mechanical + AI</strong>
-            </div>
-            <div>
-              <small>STATUS</small>
-              <strong>Exploration</strong>
-            </div>
-          </div>
-
-          <button className="researchButton">
-            Explore Research →
-          </button>
-        </div>
-      </article>
-
-
-      <article className="researchCard">
-        <div className="researchImage">
-          <img src="/assets/research-interstellar.jpg" alt="Interstellar Propulsion" />
-          <span>FUTURE SPACE</span>
-        </div>
-
-        <div className="researchBody">
-          <h3>🌌 Interstellar Propulsion</h3>
-          <p>
-            Thinking about future propulsion systems that could make
-            deep-space and interstellar missions possible.
-          </p>
-
-          <div className="researchFacts">
-            <div>
-              <small>FIELD</small>
-              <strong>Space Propulsion</strong>
-            </div>
-            <div>
-              <small>STATUS</small>
-              <strong>Future Concept</strong>
-            </div>
-          </div>
-
-          <button className="researchButton">
-            Explore Research →
-          </button>
-        </div>
-      </article>
-
-    </div>
   </main>
 )}
       {active === "ideas" && (
