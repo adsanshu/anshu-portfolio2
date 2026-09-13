@@ -1679,3 +1679,21 @@
     padding: 9px 14px;
   }
 }
+.poemNext {
+  display: block;
+  margin: 30px auto 0;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  background: #111827;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.poemNext:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+}
