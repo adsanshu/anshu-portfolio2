@@ -4,6 +4,8 @@ function ExplorePage({ onBack }) {
   const [active, setActive] = useState("home");
   const [selectedPoem, setSelectedPoem] = useState(null);
   const [currentPoemIndex, setCurrentPoemIndex] = useState(0);
+  const [poemsUnlocked, setPoemsUnlocked] = useState(false);
+const [poemCode, setPoemCode] = useState("");
 const poemParts = [
   {
     id: 1,
@@ -235,73 +237,213 @@ const poemParts = [
         {active === "poems" && (
   <div className="poemsSection">
 
-    {!selectedPoem && (
-      <>
-        <div className="poemsIntro">
-          <span className="poemsLabel">
-            ✍️ ORIGINAL POETRY COLLECTION
-          </span>
+    {!poemsUnlocked ? (
+      <div className="poemLock">
 
-          <h2>📖 मन के अनकहे स्वर</h2>
-
-          <p>
-            प्रेम, विरह, तन्हाई, दर्द, यादों और जीवन
-            के अनकहे एहसासों की यात्रा।
-          </p>
+        <div className="poemLockIcon">
+          🔒
         </div>
 
-        <div className="poemParts">
+        <h2>Private Poetry Collection</h2>
 
-          {poemParts.map((part) => (
-            <details
-              className="poemPart"
-              key={part.id}
-            >
+        <p>
+          Enter the code to unlock
+          <br />
+          “मन के अनकहे स्वर”
+        </p>
 
-              <summary className="partButton">
-                <span>
-                  {part.icon} Part {part.id} — {part.title}
-                </span>
+        <input
+          type="password"
+          value={poemCode}
+          onChange={(e) => setPoemCode(e.target.value)}
+          placeholder="Enter 4-digit code"
+          maxLength={4}
+          inputMode="numeric"
+        />
 
-                <span>＋</span>
-              </summary>
+        <button
+          type="button"
+          onClick={() => {
+            if (poemCode === "8083") {
+              setPoemsUnlocked(true);
+              setPoemCode("");
+            } else {
+              alert("Incorrect code");
+            }
+          }}
+        >
+          🔓 Unlock Poems
+        </button>
 
-              <div className="unitList">
+      </div>
+    ) : (
 
-                {part.units.map((unit, index) => (
-                  <button
-                    type="button"
-                    className="unitItem"
-                    key={unit.id}
-                    onClick={(event) => {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      setCurrentPoemIndex(
-  allPoems.findIndex((poem) => poem.id === unit.id)
-);
-setSelectedPoem(unit);
-                    }}
-                  >
+      <>
+        {!selectedPoem && (
+          <>
+            <div className="poemsIntro">
 
-                    <span>📄</span>
+              <span className="poemsLabel">
+                ✍️ ORIGINAL POETRY COLLECTION
+              </span>
+
+              <h2>
+                📖 मन के अनकहे स्वर
+              </h2>
+
+              <p>
+                प्रेम, विरह, तन्हाई, दर्द, यादों और जीवन
+                के अनकहे एहसासों की यात्रा।
+              </p>
+
+            </div>
+
+            <div className="poemParts">
+
+              {poemParts.map((part) => (
+                <details
+                  className="poemPart"
+                  key={part.id}
+                >
+
+                  <summary className="partButton">
 
                     <span>
-                      Unit {index + 1} — {unit.title}
+                      {part.icon} Part {part.id} — {part.title}
                     </span>
 
-                    <span>→</span>
+                    <span>
+                      ＋
+                    </span>
 
-                  </button>
-                ))}
+                  </summary>
 
-              </div>
+                  <div className="unitList">
 
-            </details>
-          ))}
+                    {part.units.map((unit, index) => (
+                      <button
+                        type="button"
+                        className="unitItem"
+                        key={unit.id}
+                        onClick={(event) => {
 
-        </div>
+                          event.preventDefault();
+                          event.stopPropagation();
+
+                          setCurrentPoemIndex(
+                            allPoems.findIndex(
+                              (poem) => poem.id === unit.id
+                            )
+                          );
+
+                          setSelectedPoem(unit);
+
+                        }}
+                      >
+
+                        <span>
+                          📄
+                        </span>
+
+                        <span>
+                          Unit {index + 1} — {unit.title}
+                        </span>
+
+                        <span>
+                          →
+                        </span>
+
+                      </button>
+                    ))}
+
+                  </div>
+
+                </details>
+              ))}
+
+            </div>
+          </>
+        )}
+
+        {selectedPoem && (
+          <div className="poemDisplay">
+
+            <button
+              type="button"
+              className="poemClose"
+              onClick={() => setSelectedPoem(null)}
+            >
+              ← Back to Units
+            </button>
+
+            <span className="poemsLabel">
+              📖 मन के अनकहे स्वर
+            </span>
+
+            <h2>
+              {selectedPoem.title}
+            </h2>
+
+            <div className="poemText">
+
+              {selectedPoem.poem ? (
+
+                selectedPoem.poem
+                  .split("\n")
+                  .map((line, index) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))
+
+              ) : (
+
+                <p>
+                  ✍️ इस Unit की कविता जल्द ही यहाँ जोड़ी जाएगी।
+                </p>
+
+              )}
+
+            </div>
+
+            <button
+              type="button"
+              className="poemNext"
+              disabled={
+                currentPoemIndex >= allPoems.length - 1
+              }
+              onClick={() => {
+
+                const nextIndex =
+                  currentPoemIndex + 1;
+
+                if (nextIndex < allPoems.length) {
+
+                  setCurrentPoemIndex(nextIndex);
+
+                  setSelectedPoem(
+                    allPoems[nextIndex]
+                  );
+
+                }
+
+              }}
+            >
+              {currentPoemIndex >= allPoems.length - 1
+                ? "End"
+                : "Next →"}
+            </button>
+
+          </div>
+        )}
+
       </>
+
     )}
+
+  </div>
+)}
 
     {selectedPoem && (
       <div className="poemDisplay">
