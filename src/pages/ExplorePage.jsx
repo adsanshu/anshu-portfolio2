@@ -231,7 +231,7 @@ const poemParts = [
           </>
         )}
         {active === "poems" && (
-         <div className="poemsSection">
+  <div className="poemsSection">
 
     <div className="poemsIntro">
       <span className="poemsLabel">
@@ -249,7 +249,10 @@ const poemParts = [
     <div className="poemParts">
 
       {poemParts.map((part) => (
-  <details className="poemPart" key={part.id}>
+        <details
+          className="poemPart"
+          key={part.id}
+        >
 
           <summary className="partButton">
             <span>
@@ -262,63 +265,75 @@ const poemParts = [
           <div className="unitList">
 
             {part.units.map((unit, index) => (
-  <button
-    type="button"
-    className="unitItem"
-    key={unit.id}
-    onClick={() => {
-      setSelectedPoem(unit);
-    }}
-  >
-    <span>📄</span>
+              <button
+                type="button"
+                className="unitItem"
+                key={unit.id}
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  setSelectedPoem(unit);
+                }}
+              >
 
-    <span>
-      Unit {index + 1} — {unit.title}
-    </span>
+                <span>📄</span>
 
-    <span>→</span>
-  </button>
-))}
+                <span>
+                  Unit {index + 1} — {unit.title}
+                </span>
+
+                <span>→</span>
+
+              </button>
+            ))}
+
           </div>
 
         </details>
       ))}
 
     </div>
+
     {selectedPoem && (
-  <div className="poemDisplay">
+      <div className="poemDisplay">
 
-    <button
-      className="poemClose"
-      onClick={() => setSelectedPoem(null)}
-    >
-      ← Back to Units
-    </button>
+        <button
+          type="button"
+          className="poemClose"
+          onClick={() => setSelectedPoem(null)}
+        >
+          ← Back to Units
+        </button>
 
-    <span className="poemsLabel">
-      📖 मन के अनकहे स्वर
-    </span>
+        <span className="poemsLabel">
+          📖 मन के अनकहे स्वर
+        </span>
 
-    <h2>{selectedPoem.title}</h2>
+        <h2>
+          {selectedPoem.title}
+        </h2>
 
-    <div className="poemText">
-      {selectedPoem.poem ? (
-        selectedPoem.poem.split("\n").map((line, index) => (
-          <React.Fragment key={index}>
-            {line}
-            <br />
-          </React.Fragment>
-        ))
-      ) : (
-        <p>
-          ✍️ इस Unit की कविता जल्द ही यहाँ जोड़ी जाएगी।
-        </p>
-      )}
-    </div>
+        <div className="poemText">
+
+          {selectedPoem.poem ? (
+            selectedPoem.poem.split("\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))
+          ) : (
+            <p>
+              ✍️ इस Unit की कविता जल्द ही यहाँ जोड़ी जाएगी।
+            </p>
+          )}
+
+        </div>
+
+      </div>
+    )}
 
   </div>
-)}
-    </div>
 )}
         {active === "research" && (
           <>
