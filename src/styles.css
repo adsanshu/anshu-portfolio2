@@ -1795,3 +1795,36 @@
   }
 
 }
+/* ================================
+   POEMS - DARK MODE FIX
+================================ */
+
+.dark .poemPart,
+.dark .partButton,
+.dark .unitItem {
+  color: #f8fafc;
+}
+
+.dark .poemPart {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+.dark .partButton {
+  color: #ffffff;
+}
+
+.dark .unitItem {
+  color: #e2e8f0;
+}
+
+.dark .unitItem span {
+  color: inherit;
+}
+
+.dark .poemsIntro h2,
+.dark .poemsIntro p,
+.dark .poemDisplay h2,
+.dark .poemText {
+  color: #f8fafc;
+}
