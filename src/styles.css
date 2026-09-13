@@ -1483,4 +1483,111 @@
     font-size: 24px;
   }
 
+}/* ================================
+   POEMS SECTION
+================================ */
+
+.poemsIntro {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.poemsLabel {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  color: #7c3aed;
+  margin-bottom: 10px;
+}
+
+.poemsIntro h2 {
+  margin: 0 0 12px;
+  font-size: 32px;
+}
+
+.poemsIntro p {
+  max-width: 650px;
+  margin: auto;
+}
+
+/* PARTS */
+
+.poemParts {
+  display: grid;
+  gap: 14px;
+}
+
+.poemPart {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: 0.25s ease;
+}
+
+.poemPart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.partButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 19px 22px;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.partButton::-webkit-details-marker {
+  display: none;
+}
+
+/* UNITS */
+
+.unitList {
+  padding: 0 16px 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.unitItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 15px;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.unitItem:hover {
+  background: #eef2ff;
+  color: #3730a3;
+  transform: translateX(4px);
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .poemsIntro h2 {
+    font-size: 26px;
+  }
+
+  .partButton {
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .unitItem {
+    font-size: 13px;
+  }
+
 }
