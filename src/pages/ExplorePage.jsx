@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ResearchPage from "./ResearchPage";
+import LibraryPage from "./LibraryPage";
 function ExplorePage({ onBack }) {
   const [active, setActive] = useState("home");
   const [selectedPoem, setSelectedPoem] = useState(null);
@@ -459,16 +460,9 @@ const poemParts = [
           </>
         )}
 
-        {active === "library" && (
-          <>
-            <h2>📚 Library</h2>
-
-            <p>
-              Books, notes, learning resources and
-              useful references will be added here.
-            </p>
-          </>
-        )}
+     {active === "library" && (
+  <LibraryPage />
+)}
 
       </main>
 
