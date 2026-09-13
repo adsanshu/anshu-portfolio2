@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ExplorePage({ onBack }) {
   const [active, setActive] = useState("home");
@@ -242,23 +243,35 @@ export default function ExplorePage({ onBack }) {
                     </span>
                   </button>
 
-                  {partOpen === part.id && (
-                    <div className="unitList">
-
-                      {part.units.map((unit) => (
-                        <button
-                          className="unitButton"
-                          key={unit.id}
-                          onClick={() => setSelectedUnit(unit)}
-                        >
-                          <span>📄</span>
-                          <span>{unit.title}</span>
-                          <span>→</span>
-                        </button>
-                      ))}
-
-                    </div>
-                  )}
+                  <AnimatePresence>
+  {partOpen === part.id && (
+    <motion.div
+      className="unitList"
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+    >
+      {part.units.map((unit, index) => (
+        <motion.button
+          className="unitButton"
+          key={unit.id}
+          onClick={() => setSelectedUnit(unit)}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 0.3,
+            delay: index * 0.06
+          }}
+        >
+          <span>📄</span>
+          <span>{unit.title}</span>
+          <span>→</span>
+        </motion.button>
+      ))}
+    </motion.div>
+  )}
+</AnimatePresence>
 
                 </div>
               ))}
