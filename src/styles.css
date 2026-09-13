@@ -1328,3 +1328,159 @@
   }
 
 }
+/* ================================
+   EXPLORE PAGE
+================================ */
+
+.explorePage {
+  min-height: 100vh;
+  padding: 40px 24px 80px;
+  background: linear-gradient(
+    135deg,
+    #f8fafc,
+    #eef2ff,
+    #fdf2f8
+  );
+  color: #111827;
+}
+
+.exploreBack {
+  border: none;
+  background: #111827;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.exploreBack:hover {
+  transform: translateX(-4px);
+}
+
+.exploreHeader {
+  max-width: 1000px;
+  margin: 55px auto 30px;
+  text-align: center;
+}
+
+.exploreHeader .eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #6366f1;
+  margin-bottom: 10px;
+}
+
+.exploreHeader h1 {
+  margin: 0;
+  font-size: clamp(42px, 7vw, 76px);
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.exploreHeader p {
+  margin-top: 14px;
+  color: #64748b;
+  font-size: 17px;
+}
+
+/* MENU */
+
+.exploreMenu {
+  max-width: 1000px;
+  margin: 35px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.exploreMenu button {
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: rgba(255, 255, 255, 0.75);
+  color: #334155;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  backdrop-filter: blur(10px);
+}
+
+.exploreMenu button:hover {
+  transform: translateY(-3px);
+}
+
+.exploreMenu .activeExplore {
+  background: #111827;
+  color: white;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+}
+
+/* CONTENT */
+
+.exploreContent {
+  max-width: 1000px;
+  margin: 45px auto 0;
+  padding: 35px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(15px);
+}
+
+.exploreContent h2 {
+  margin-top: 0;
+  font-size: 30px;
+}
+
+.exploreContent p {
+  color: #64748b;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .explorePage {
+    padding: 24px 16px 60px;
+  }
+
+  .exploreHeader {
+    margin-top: 40px;
+  }
+
+  .exploreHeader h1 {
+    font-size: 48px;
+  }
+
+  .exploreHeader p {
+    font-size: 15px;
+  }
+
+  .exploreMenu {
+    gap: 8px;
+  }
+
+  .exploreMenu button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .exploreContent {
+    padding: 24px 20px;
+    border-radius: 22px;
+  }
+
+  .exploreContent h2 {
+    font-size: 24px;
+  }
+
+}
