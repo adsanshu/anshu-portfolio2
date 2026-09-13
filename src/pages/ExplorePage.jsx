@@ -424,9 +424,12 @@ const stopPoem = () => {
 
               </div>
 
-              <button className="researchButton">
-                Explore Research →
-              </button>
+              <button
+  className="researchButton"
+  onClick={() => setSelectedResearch("energy")}
+>
+  Explore Research →
+</button>
 
             </div>
           </article>
@@ -467,9 +470,12 @@ const stopPoem = () => {
 
               </div>
 
-              <button className="researchButton">
-                Explore Research →
-              </button>
+              <button
+  className="researchButton"
+  onClick={() => setSelectedResearch("ai")}
+>
+  Explore Research →
+</button>
 
             </div>
           </article>
@@ -510,9 +516,12 @@ const stopPoem = () => {
 
               </div>
 
-              <button className="researchButton">
-                Explore Research →
-              </button>
+              <button
+  className="researchButton"
+  onClick={() => setSelectedResearch("interstellar")}
+>
+  Explore Research →
+</button>
 
             </div>
           </article>
