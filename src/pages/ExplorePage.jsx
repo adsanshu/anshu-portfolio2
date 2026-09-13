@@ -6,6 +6,7 @@ export default function ExplorePage({ onBack }) {
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [partOpen, setPartOpen] = useState(null);
   const [selectedResearch, setSelectedResearch] = useState(null);
+  const [selectedIdea, setSelectedIdea] = useState(null);
   const researchData = {
   laser: {
     label: "🚀 SPACE TECHNOLOGY",
