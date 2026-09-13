@@ -245,7 +245,7 @@ const stopPoem = () => {
   </button>
 </div>
 
-{{selectedUnit.poem ? (
+{selectedUnit.poem ? (
   <div className="poemText">
     {selectedUnit.poem.split("\n").map((line, index) => (
       <React.Fragment key={index}>
