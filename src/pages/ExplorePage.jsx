@@ -803,7 +803,7 @@ const stopPoem = () => {
 )}
   </main>
 )}
-      {active === "ideas" && (
+      {active === "ideas" && !selectedIdea && (
         <main className="exploreContent">
           <h2>💡 Ideas</h2>
           <p>
@@ -824,3 +824,80 @@ const stopPoem = () => {
     </div>
   );
     }
+{active === "ideas" && selectedIdea && (
+  <main className="exploreContent researchDetail">
+
+    <button
+      className="researchBack"
+      onClick={() => setSelectedIdea(null)}
+    >
+      ← Back to Ideas
+    </button>
+
+    <span className="researchDetailLabel">
+      {selectedIdea.field}
+    </span>
+
+    <h2>
+      {selectedIdea.icon} {selectedIdea.title}
+    </h2>
+
+    <p className="researchDetailIntro">
+      {selectedIdea.description}
+    </p>
+
+    <div className="researchInfoGrid">
+
+      <section>
+        <span>01</span>
+        <h3>💡 Concept</h3>
+        <p>
+          This idea explores how modern technology can be combined
+          with practical engineering and real-world applications.
+        </p>
+      </section>
+
+      <section>
+        <span>02</span>
+        <h3>⚙️ Application</h3>
+        <p>
+          The concept could be developed into a practical project
+          through research, testing and engineering analysis.
+        </p>
+      </section>
+
+      <section>
+        <span>03</span>
+        <h3>🔬 Research</h3>
+        <p>
+          Further study, experiments and technical validation would
+          be required before developing a working system.
+        </p>
+      </section>
+
+      <section>
+        <span>04</span>
+        <h3>🚀 Future Scope</h3>
+        <p>
+          Continued research and innovation could turn this concept
+          into a useful engineering or technology solution.
+        </p>
+      </section>
+
+    </div>
+
+    <div className="researchFuture">
+
+      <span>MY VISION</span>
+
+      <h3>Turning Ideas Into Reality</h3>
+
+      <p>
+        An idea becomes meaningful when it can be researched,
+        tested and gradually converted into a useful solution.
+      </p>
+
+    </div>
+
+  </main>
+)}
