@@ -740,130 +740,67 @@ const stopPoem = () => {
     ) : (
 
       /* RESEARCH DETAIL */
+  <motion.article
+    className="researchDetail"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+  >
 
-      <motion.article
-        className="researchDetail"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+    <button
+      className="researchBack"
+      onClick={() => setSelectedResearch(null)}
+    >
+      ← Back to Research
+    </button>
 
-        <button
-          className="researchBack"
-          onClick={() => setSelectedResearch(null)}
-        >
-          ← Back to Research
-        </button>
+    <span className="researchDetailLabel">
+      {currentResearch.label}
+    </span>
 
-        <span className="researchDetailLabel">
-          🚀 SPACE TECHNOLOGY
-        </span>
+    <h2>{currentResearch.title}</h2>
 
-        <h2>Laser Propulsion</h2>
+    <p className="researchDetailIntro">
+      {currentResearch.intro}
+    </p>
 
-        <p className="researchDetailIntro">
-          A future propulsion concept where external laser energy
-          provides momentum to a spacecraft, reducing the need to
-          carry large amounts of onboard propellant.
-        </p>
+    <div className="researchDetailImage">
+      <img
+        src={currentResearch.image}
+        alt={currentResearch.alt}
+      />
+    </div>
 
+    <div className="researchInfoGrid">
 
-        <div className="researchDetailImage">
-          <img
-            src="/assets/research-laser.jpg"
-            alt="Laser Propulsion Research"
-          />
-        </div>
+      {currentResearch.sections.map((section) => (
+        <section key={section.number}>
 
+          <span>{section.number}</span>
 
-        <div className="researchInfoGrid">
+          <h3>{section.title}</h3>
 
-          <section>
-            <span>01</span>
-            <h3>🔎 Problem</h3>
-            <p>
-              Conventional spacecraft must carry their own propellant.
-              Fuel adds mass and limits how much useful payload a
-              spacecraft can carry.
-            </p>
-          </section>
+          <p>{section.text}</p>
 
+        </section>
+      ))}
 
-          <section>
-            <span>02</span>
-            <h3>💡 Basic Idea</h3>
-            <p>
-              A powerful laser system located away from the spacecraft
-              could transfer energy and momentum to a lightweight
-              spacecraft.
-            </p>
-          </section>
+    </div>
 
+    <div className="researchFuture">
 
-          <section>
-            <span>03</span>
-            <h3>⚙️ How It Works</h3>
-            <p>
-              Laser light is directed toward a reflective sail.
-              The interaction between light and the sail produces
-              radiation pressure that can accelerate the spacecraft.
-            </p>
-          </section>
+      <span>🚀 FUTURE POSSIBILITY</span>
 
+      <h3>Where could this lead?</h3>
 
-          <section>
-            <span>04</span>
-            <h3>🧪 Scientific Principle</h3>
-            <p>
-              Electromagnetic radiation carries momentum. When light
-              interacts with a reflective surface, some of that momentum
-              can produce a small pushing force.
-            </p>
-          </section>
+      <p>
+        {currentResearch.future}
+      </p>
 
+    </div>
 
-          <section>
-            <span>05</span>
-            <h3>✅ Advantages</h3>
-            <p>
-              The spacecraft may need less onboard propellant,
-              potentially reducing launch mass and enabling very high
-              speeds over long acceleration periods.
-            </p>
-          </section>
-
-
-          <section>
-            <span>06</span>
-            <h3>⚠️ Challenges</h3>
-            <p>
-              Extremely powerful laser systems, precise beam control,
-              thermal management and maintaining acceleration over
-              large distances are major engineering challenges.
-            </p>
-          </section>
-
-        </div>
-
-
-        <div className="researchFuture">
-
-          <span>🚀 FUTURE POSSIBILITY</span>
-
-          <h3>Where could this lead?</h3>
-
-          <p>
-            Advanced laser propulsion concepts could contribute to
-            future high-speed space missions. Research is still required
-            to solve the major engineering and energy challenges.
-          </p>
-
-        </div>
-
-      </motion.article>
-
-    )}
-
+  </motion.article>
+)}
   </main>
 )}
       {active === "ideas" && (
