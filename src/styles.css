@@ -937,3 +937,42 @@
     line-height: 1.9;
   }
 }
+ .poemReader::before {
+  content: "❝";
+  display: block;
+  font-size: 55px;
+  line-height: 1;
+  opacity: 0.18;
+  margin-bottom: 5px;
+}
+
+.poemText br {
+  line-height: 2.2;
+}.poemPart {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.poemPart:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.partButton {
+  position: relative;
+  overflow: hidden;
+}
+
+.partButton::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #38bdf8;
+  transition: width 0.35s ease;
+}
+
+.partButton:hover::after {
+  width: 100%;
+}
