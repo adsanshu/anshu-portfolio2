@@ -361,8 +361,1037 @@ const stopPoem = () => {
       ]
     }
   ];
+return (
+  <div className="explorePage">
 
-  return (
+    <button className="exploreBack" onClick={onBack}>
+      ← Back
+    </button>
+
+    <header className="exploreHeader">
+      <span className="eyebrow">ANSHU'S WORLD</span>
+      <h1>Explore</h1>
+      <p>My poems, research, ideas and personal library.</p>
+    </header>
+
+    {!selectedUnit && (
+      <nav className="exploreMenu">
+        {menuItems.map((item) => (
+          <button
+            key={item.id}
+            className={active === item.id ? "activeExplore" : ""}
+            onClick={() => {
+              setActive(item.id);
+              setSelectedUnit(null);
+              setPartOpen(null);
+              setSelectedResearch(null);
+              setSelectedIdea(null);
+            }}
+          >
+            {item.icon} {item.label}
+          </button>
+        ))}
+      </nav>
+    )}
+
+    {/* HOME */}
+    {active === "home" && (
+      <main className="exploreContent">
+        <h2>🏠 Welcome to Anshu's World</h2>
+
+        <p>
+          A personal space where creativity, engineering,
+          research and new ideas come together.
+        </p>
+      </main>
+    )}
+
+    {/* POEMS */}
+    {active === "poems" && (
+      <main className="exploreContent poemsSection">
+
+        <div className="poemsIntro">
+          <span className="poemsLabel">
+            ✍️ ORIGINAL POETRY COLLECTION
+          </span>
+
+          <h2>📖 मन के अनकहे स्वर</h2>
+
+          <p>
+            प्रेम, विरह, तन्हाई, दर्द, यादों और जीवन के
+            अनकहे एहसासों की यात्रा।
+          </p>
+        </div>
+
+        {selectedUnit ? (
+          <motion.article
+            className="poemReader"
+            initial={{ opacity: 0, y: 30, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+
+            <button
+              className="poemBack"
+              onClick={() => setSelectedUnit(null)}
+            >
+              ← वापस Units
+            </button>
+
+            <span className="poemReaderLabel">
+              मन के अनकहे स्वर
+            </span>
+
+            <h2>{selectedUnit.title}</h2>
+
+            <div className="poemControls">
+
+              <button
+                className="poemSpeak"
+                onClick={() =>
+                  speakPoem(selectedUnit.poem || "")
+                }
+              >
+                🔊 कविता सुनें
+              </button>
+
+              <button
+                className="poemStop"
+                onClick={stopPoem}
+              >
+                ⏹ रोकें
+              </button>
+
+            </div>
+
+            {selectedUnit.poem ? (
+              <div className="poemText">
+                {selectedUnit.poem
+                  .split("\n")
+                  .map((line, index) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+              </div>
+            ) : (
+              <p className="poemComingSoon">
+                ✍️ इस Unit की कविता जल्द ही यहाँ जोड़ी जाएगी।
+              </p>
+            )}
+
+          </motion.article>
+        ) : (
+
+          <div className="poemSyllabus">
+
+            {parts.map((part) => (
+              <div
+                className="poemPart"
+                key={part.id}
+              >
+
+                <button
+                  className="partButton"
+                  onClick={() =>
+                    setPartOpen(
+                      partOpen === part.id
+                        ? null
+                        : part.id
+                    )
+                  }
+                >
+
+                  <span>
+                    {part.icon} {part.title}
+                  </span>
+
+                  <span>
+                    {partOpen === part.id ? "−" : "+"}
+                  </span>
+
+                </button>
+
+                <AnimatePresence>
+
+                  {partOpen === part.id && (
+                    <motion.div
+                      className="unitList"
+                      initial={{
+                        opacity: 0,
+                        height: 0
+                      }}
+                      animate={{
+                        opacity: 1,
+                        height: "auto"
+                      }}
+                      exit={{
+                        opacity: 0,
+                        height: 0
+                      }}
+                      transition={{
+                        duration: 0.35,
+                        ease: "easeOut"
+                      }}
+                    >
+
+                      {part.units.map(
+                        (unit, index) => (
+                          <motion.button
+                            className="unitButton"
+                            key={unit.id}
+                            onClick={() =>
+                              setSelectedUnit(unit)
+                            }
+                            initial={{
+                              opacity: 0,
+                              x: -20
+                            }}
+                            animate={{
+                              opacity: 1,
+                              x: 0
+                            }}
+                            transition={{
+                              duration: 0.3,
+                              delay: index * 0.06
+                            }}
+                          >
+
+                            <span>📄</span>
+
+                            <span>
+                              {unit.title}
+                            </span>
+
+                            <span>→</span>
+
+                          </motion.button>
+                        )
+                      )}
+
+                    </motion.div>
+                  )}
+
+                </AnimatePresence>
+
+              </div>
+            ))}
+
+          </div>
+        )}
+
+      </main>
+    )}
+
+    {/* RESEARCH */}
+    {active === "research" && (
+      <main className="exploreContent researchSection">
+
+        {!selectedResearch ? (
+          <>
+
+            <div className="researchIntro">
+
+              <span className="researchLabel">
+                🔬 ENGINEERING & FUTURE TECHNOLOGY
+              </span>
+
+              <h2>Research & Discoveries</h2>
+
+              <p>
+                Simple explanations of engineering concepts,
+                scientific ideas and technologies that may
+                shape the future.
+              </p>
+
+            </div>
+
+            <div className="researchGrid">
+
+              {/* LASER PROPULSION */}
+
+              <article className="researchCard">
+
+                <div className="researchImage">
+
+                  <img
+                    src="/assets/research-laser.jpg"
+                    alt="Laser Propulsion"
+                  />
+
+                  <span>
+                    SPACE TECHNOLOGY
+                  </span>
+
+                </div>
+
+                <div className="researchBody">
+
+                  <h3>
+                    🚀 Laser Propulsion
+                  </h3>
+
+                  <p>
+                    Exploring how powerful laser beams
+                    could push spacecraft without carrying
+                    traditional fuel.
+                  </p>
+
+                  <div className="researchFacts">
+
+                    <div>
+                      <small>FIELD</small>
+                      <strong>
+                        Space Engineering
+                      </strong>
+                    </div>
+
+                    <div>
+                      <small>STATUS</small>
+                      <strong>
+                        Research Idea
+                      </strong>
+                    </div>
+
+                  </div>
+
+                  <button
+                    className="researchButton"
+                    onClick={() =>
+                      setSelectedResearch("laser")
+                    }
+                  >
+                    Explore Research →
+                  </button>
+
+                </div>
+
+              </article>
+
+              {/* SPACE ENERGY */}
+
+              <article className="researchCard">
+
+                <div className="researchImage">
+
+                  <img
+                    src="/assets/research-energy.jpg"
+                    alt="Space Energy Transfer"
+                  />
+
+                  <span>
+                    ENERGY SYSTEMS
+                  </span>
+
+                </div>
+
+                <div className="researchBody">
+
+                  <h3>
+                    ⚡ Space Energy Transfer
+                  </h3>
+
+                  <p>
+                    Studying how energy might be
+                    transferred across very large
+                    distances using electromagnetic
+                    systems.
+                  </p>
+
+                  <div className="researchFacts">
+
+                    <div>
+                      <small>FIELD</small>
+                      <strong>
+                        Energy Engineering
+                      </strong>
+                    </div>
+
+                    <div>
+                      <small>STATUS</small>
+                      <strong>
+                        Concept Study
+                      </strong>
+                    </div>
+
+                  </div>
+
+                  <button
+                    className="researchButton"
+                    onClick={() =>
+                      setSelectedResearch("energy")
+                    }
+                  >
+                    Explore Research →
+                  </button>
+
+                </div>
+
+              </article>
+
+              {/* AI + MECHANICAL */}
+
+              <article className="researchCard">
+
+                <div className="researchImage">
+
+                  <img
+                    src="/assets/research-ai.jpg"
+                    alt="AI Mechanical Engineering"
+                  />
+
+                  <span>
+                    SMART ENGINEERING
+                  </span>
+
+                </div>
+
+                <div className="researchBody">
+
+                  <h3>
+                    🤖 AI + Mechanical Engineering
+                  </h3>
+
+                  <p>
+                    Exploring how artificial intelligence
+                    can improve design, manufacturing,
+                    automation and engineering decisions.
+                  </p>
+
+                  <div className="researchFacts">
+
+                    <div>
+                      <small>FIELD</small>
+                      <strong>
+                        Mechanical + AI
+                      </strong>
+                    </div>
+
+                    <div>
+                      <small>STATUS</small>
+                      <strong>
+                        Exploration
+                      </strong>
+                    </div>
+
+                  </div>
+
+                  <button
+                    className="researchButton"
+                    onClick={() =>
+                      setSelectedResearch("ai")
+                    }
+                  >
+                    Explore Research →
+                  </button>
+
+                </div>
+
+              </article>
+
+              {/* INTERSTELLAR */}
+
+              <article className="researchCard">
+
+                <div className="researchImage">
+
+                  <img
+                    src="/assets/research-interstellar.jpg"
+                    alt="Interstellar Propulsion"
+                  />
+
+                  <span>
+                    FUTURE SPACE
+                  </span>
+
+                </div>
+
+                <div className="researchBody">
+
+                  <h3>
+                    🌌 Interstellar Propulsion
+                  </h3>
+
+                  <p>
+                    Thinking about future propulsion
+                    systems that could make deep-space
+                    and interstellar missions possible.
+                  </p>
+
+                  <div className="researchFacts">
+
+                    <div>
+                      <small>FIELD</small>
+                      <strong>
+                        Space Propulsion
+                      </strong>
+                    </div>
+
+                    <div>
+                      <small>STATUS</small>
+                      <strong>
+                        Future Concept
+                      </strong>
+                    </div>
+
+                  </div>
+
+                  <button
+                    className="researchButton"
+                    onClick={() =>
+                      setSelectedResearch(
+                        "interstellar"
+                      )
+                    }
+                  >
+                    Explore Research →
+                  </button>
+
+                </div>
+
+              </article>
+
+            </div>
+
+          </>
+        ) : (
+
+          /* RESEARCH DETAIL */
+
+          <motion.article
+            className="researchDetail"
+            initial={{
+              opacity: 0,
+              y: 30
+            }}
+            animate={{
+              opacity: 1,
+              y: 0
+            }}
+            transition={{
+              duration: 0.5
+            }}
+          >
+
+            <button
+              className="researchBack"
+              onClick={() =>
+                setSelectedResearch(null)
+              }
+            >
+              ← Back to Research
+            </button>
+
+            <span className="researchDetailLabel">
+              {currentResearch.label}
+            </span>
+
+            <h2>
+              {currentResearch.title}
+            </h2>
+
+            <p className="researchDetailIntro">
+              {currentResearch.intro}
+            </p>
+
+            <div className="researchDetailImage">
+
+              <img
+                src={currentResearch.image}
+                alt={currentResearch.alt}
+              />
+
+            </div>
+
+            <div className="researchInfoGrid">
+
+              {currentResearch.sections.map(
+                (section) => (
+                  <section
+                    key={section.number}
+                  >
+
+                    <span>
+                      {section.number}
+                    </span>
+
+                    <h3>
+                      {section.title}
+                    </h3>
+
+                    <p>
+                      {section.text}
+                    </p>
+
+                  </section>
+                )
+              )}
+
+            </div>
+
+            <div className="researchFuture">
+
+              <span>
+                🚀 FUTURE POSSIBILITY
+              </span>
+
+              <h3>
+                Where could this lead?
+              </h3>
+
+              <p>
+                {currentResearch.future}
+              </p>
+
+            </div>
+
+          </motion.article>
+        )}
+
+      </main>
+    )}
+
+    {/* IDEAS */}
+
+    {active === "ideas" && !selectedIdea && (
+      <main className="exploreContent researchSection">
+
+        <div className="researchIntro">
+
+          <span className="researchLabel">
+            💡 CREATIVE & FUTURE IDEAS
+          </span>
+
+          <h2>
+            Ideas & Concepts
+          </h2>
+
+          <p>
+            New ideas combining engineering,
+            technology, science and creativity.
+          </p>
+
+        </div>
+
+        <div className="researchGrid">
+
+          {/* AI + ENGINEERING */}
+
+          <article className="researchCard">
+
+            <div className="researchImage">
+
+              <div className="ideaIcon">
+                🤖
+              </div>
+
+              <span>
+                SMART ENGINEERING
+              </span>
+
+            </div>
+
+            <div className="researchBody">
+
+              <h3>
+                🤖 AI + Engineering
+              </h3>
+
+              <p>
+                Ideas for using artificial intelligence
+                in mechanical engineering, design
+                and manufacturing.
+              </p>
+
+              <div className="researchFacts">
+
+                <div>
+                  <small>FIELD</small>
+                  <strong>
+                    Smart Engineering
+                  </strong>
+                </div>
+
+                <div>
+                  <small>STATUS</small>
+                  <strong>
+                    Concept Idea
+                  </strong>
+                </div>
+
+              </div>
+
+              <button
+                className="researchButton"
+                onClick={() =>
+                  setSelectedIdea({
+                    icon: "🤖",
+                    title: "AI + Engineering",
+                    field: "Smart Engineering",
+                    description:
+                      "Ideas for using artificial intelligence in mechanical engineering, design and manufacturing."
+                  })
+                }
+              >
+                Explore Idea →
+              </button>
+
+            </div>
+
+          </article>
+
+          {/* FUTURE TECHNOLOGY */}
+
+          <article className="researchCard">
+
+            <div className="researchImage">
+
+              <div className="ideaIcon">
+                🚀
+              </div>
+
+              <span>
+                FUTURE TECHNOLOGY
+              </span>
+
+            </div>
+
+            <div className="researchBody">
+
+              <h3>
+                🚀 Future Technology
+              </h3>
+
+              <p>
+                Exploring technology concepts that
+                could transform transportation, energy
+                and engineering.
+              </p>
+
+              <div className="researchFacts">
+
+                <div>
+                  <small>FIELD</small>
+                  <strong>
+                    Future Technology
+                  </strong>
+                </div>
+
+                <div>
+                  <small>STATUS</small>
+                  <strong>
+                    Concept Idea
+                  </strong>
+                </div>
+
+              </div>
+
+              <button
+                className="researchButton"
+                onClick={() =>
+                  setSelectedIdea({
+                    icon: "🚀",
+                    title: "Future Technology",
+                    field: "Future Technology",
+                    description:
+                      "Exploring technology concepts that could transform transportation, energy and engineering."
+                  })
+                }
+              >
+                Explore Idea →
+              </button>
+
+            </div>
+
+          </article>
+
+          {/* SPACE RESEARCH */}
+
+          <article className="researchCard">
+
+            <div className="researchImage">
+
+              <div className="ideaIcon">
+                🌌
+              </div>
+
+              <span>
+                SPACE TECHNOLOGY
+              </span>
+
+            </div>
+
+            <div className="researchBody">
+
+              <h3>
+                🌌 Space Research Ideas
+              </h3>
+
+              <p>
+                Creative concepts related to spacecraft,
+                propulsion, energy and future space
+                exploration.
+              </p>
+
+              <div className="researchFacts">
+
+                <div>
+                  <small>FIELD</small>
+                  <strong>
+                    Space Technology
+                  </strong>
+                </div>
+
+                <div>
+                  <small>STATUS</small>
+                  <strong>
+                    Concept Idea
+                  </strong>
+                </div>
+
+              </div>
+
+              <button
+                className="researchButton"
+                onClick={() =>
+                  setSelectedIdea({
+                    icon: "🌌",
+                    title: "Space Research Ideas",
+                    field: "Space Technology",
+                    description:
+                      "Creative concepts related to spacecraft, propulsion, energy and future space exploration."
+                  })
+                }
+              >
+                Explore Idea →
+                </button>
+
+            </div>
+
+          </article>
+
+          {/* AGRICULTURE */}
+
+          <article className="researchCard">
+
+            <div className="researchImage">
+
+              <div className="ideaIcon">
+                🌱
+              </div>
+
+              <span>
+                AGRITECH
+              </span>
+
+            </div>
+
+            <div className="researchBody">
+
+              <h3>
+                🌱 Agriculture Technology
+              </h3>
+
+              <p>
+                Technology ideas that can help farmers
+                identify crops, soil conditions and
+                plant diseases.
+              </p>
+
+              <div className="researchFacts">
+
+                <div>
+                  <small>FIELD</small>
+                  <strong>
+                    AgriTech
+                  </strong>
+                </div>
+
+                <div>
+                  <small>STATUS</small>
+                  <strong>
+                    Concept Idea
+                  </strong>
+                </div>
+
+              </div>
+
+              <button
+                className="researchButton"
+                onClick={() =>
+                  setSelectedIdea({
+                    icon: "🌱",
+                    title: "Agriculture Technology",
+                    field: "AgriTech",
+                    description:
+                      "Technology ideas that can help farmers identify crops, soil conditions and plant diseases."
+                  })
+                }
+              >
+                Explore Idea →
+              </button>
+
+            </div>
+
+          </article>
+
+          {/* EDUCATION */}
+
+          <article className="researchCard">
+
+            <div className="researchImage">
+
+              <div className="ideaIcon">
+                📚
+              </div>
+
+              <span>
+                EDTECH
+              </span>
+
+            </div>
+
+            <div className="researchBody">
+
+              <h3>
+                📚 Education Technology
+              </h3>
+
+              <p>
+                Ideas for making learning, testing and
+                educational resources more accessible
+                through technology.
+              </p>
+
+              <div className="researchFacts">
+
+                <div>
+                  <small>FIELD</small>
+                  <strong>
+                    EdTech
+                  </strong>
+                </div>
+
+                <div>
+                  <small>STATUS</small>
+                  <strong>
+                    Concept Idea
+                  </strong>
+                </div>
+
+              </div>
+
+              <button
+                className="researchButton"
+                onClick={() =>
+                  setSelectedIdea({
+                    icon: "📚",
+                    title: "Education Technology",
+                    field: "EdTech",
+                    description:
+                      "Ideas for making learning, testing and educational resources more accessible through technology."
+                  })
+                }
+              >
+                Explore Idea →
+              </button>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </main>
+    )}
+
+    {/* IDEA DETAIL */}
+
+    {active === "ideas" && selectedIdea && (
+      <main className="exploreContent researchSection">
+
+        <motion.article
+          className="researchDetail"
+          initial={{
+            opacity: 0,
+            y: 30
+          }}
+          animate={{
+            opacity: 1,
+            y: 0
+          }}
+          transition={{
+            duration: 0.5
+          }}
+        >
+
+          <button
+            className="researchBack"
+            onClick={() =>
+              setSelectedIdea(null)
+            }
+          >
+            ← Back to Ideas
+          </button>
+
+          <span className="researchDetailLabel">
+            {selectedIdea.field}
+          </span>
+
+          <h2>
+            {selectedIdea.icon} {selectedIdea.title}
+          </h2>
+
+          <p className="researchDetailIntro">
+            {selectedIdea.description}
+          </p>
+
+          <div className="researchFuture">
+
+            <span>
+              💡 CONCEPT
+            </span>
+
+            <h3>
+              Future Possibility
+            </h3>
+
+            <p>
+              This is a creative concept exploring
+              how technology, engineering and new
+              ideas could create useful solutions
+              for the future.
+            </p>
+
+          </div>
+
+        </motion.article>
+
+      </main>
+    )}
+
+    {/* LIBRARY */}
+
+    {active === "library" && (
+      <main className="exploreContent">
+
+        <h2>
+          📚 Library
+        </h2>
+
+        <p>
+          Books, notes, learning resources and
+          useful references will be added here.
+        </p>
+
+      </main>
+    )}
+
+  </div>
+);
+           
+  {/*return (
     <div className="explorePage">
 
       <button className="exploreBack" onClick={onBack}>
@@ -803,7 +1832,8 @@ const stopPoem = () => {
   </motion.article>
 )}
   </main>
-)}{active === "ideas" && !selectedIdea && (
+)}
+      {active === "ideas" && !selectedIdea && (
   <main className="exploreContent researchSection">
 
     <div className="researchIntro">
@@ -1042,5 +2072,4 @@ const stopPoem = () => {
     </div>
 
   </main>
-)}
-</div>
+)}*/}
