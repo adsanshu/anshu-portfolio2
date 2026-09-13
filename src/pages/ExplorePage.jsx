@@ -5,7 +5,25 @@ export default function ExplorePage({ onBack }) {
   const [active, setActive] = useState("home");
   const [selectedUnit, setSelectedUnit] = useState(null);
   const [partOpen, setPartOpen] = useState(null);
+const speakPoem = (text) => {
+  if (!("speechSynthesis" in window)) return;
 
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+
+  utterance.lang = "hi-IN";
+  utterance.rate = 0.85;
+  utterance.pitch = 1;
+
+  window.speechSynthesis.speak(utterance);
+};
+
+const stopPoem = () => {
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+  }
+};
   const menuItems = [
     { id: "home", icon: "🏠", label: "Home" },
     { id: "poems", icon: "📖", label: "Poems" },
@@ -146,7 +164,8 @@ export default function ExplorePage({ onBack }) {
         <p>My poems, research, ideas and personal library.</p>
       </header>
 
-      <nav className="exploreMenu">
+      {!selectedUnit && (
+  <nav className="exploreMenu">
         {menuItems.map((item) => (
           <button
             key={item.id}
@@ -160,7 +179,8 @@ export default function ExplorePage({ onBack }) {
             {item.icon} {item.label}
           </button>
         ))}
-      </nav>
+        </nav>
+)}
 
       {active === "home" && (
         <main className="exploreContent">
@@ -209,21 +229,36 @@ export default function ExplorePage({ onBack }) {
 
               <h2>{selectedUnit.title}</h2>
 
-              {selectedUnit.poem ? (
-                <div className="poemText">
-                  {selectedUnit.poem.split("\n").map((line, index) => (
-                    <React.Fragment key={index}>
-                      {line}
-                      <br />
-                    </React.Fragment>
-                  ))}
-                </div>
-              ) : (
-                <p className="poemComingSoon">
-                  ✍️ इस Unit की कविता जल्द ही यहाँ जोड़ी जाएगी।
-                </p>
-              )}
+<div className="poemControls">
+  <button
+    className="poemSpeak"
+    onClick={() => speakPoem(selectedUnit.poem || "")}
+  >
+    🔊 कविता सुनें
+  </button>
 
+  <button
+    className="poemStop"
+    onClick={stopPoem}
+  >
+    ⏹ रोकें
+  </button>
+</div>
+
+{{selectedUnit.poem ? (
+  <div className="poemText">
+    {selectedUnit.poem.split("\n").map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ))}
+  </div>
+) : (
+  <p className="poemComingSoon">
+    ✍️ इस Unit की कविता जल्द ही यहाँ जोड़ी जाएगी।
+  </p>
+)}
             </motion.article>
           ) : (
             <div className="poemSyllabus">
