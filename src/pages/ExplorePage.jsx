@@ -323,13 +323,61 @@ const stopPoem = () => {
       )}
 
       {active === "research" && (
-        <main className="exploreContent">
-          <h2>🔬 Research</h2>
-          <p>
-            Scientific thoughts, engineering concepts and future technology.
-          </p>
-        </main>
-      )}
+  <main className="exploreContent">
+    <div className="poemsIntro">
+      <span className="poemsLabel">
+        🔬 ENGINEERING & FUTURE RESEARCH
+      </span>
+
+      <h2>Research & Discoveries</h2>
+
+      <p>
+        Engineering concepts, scientific questions,
+        future technologies and my research ideas.
+      </p>
+    </div>
+
+    <div className="exploreCards">
+
+      <article className="exploreCard">
+        <span>🚀</span>
+        <h3>Laser Propulsion</h3>
+        <p>
+          Exploring how laser energy and radiation pressure
+          could help spacecraft travel through space.
+        </p>
+      </article>
+
+      <article className="exploreCard">
+        <span>⚡</span>
+        <h3>Space Energy Transfer</h3>
+        <p>
+          Studying the possibility of transferring energy
+          across large distances using electromagnetic systems.
+        </p>
+      </article>
+
+      <article className="exploreCard">
+        <span>🤖</span>
+        <h3>Future Engineering</h3>
+        <p>
+          Ideas connecting mechanical engineering,
+          automation, AI and emerging technologies.
+        </p>
+      </article>
+
+      <article className="exploreCard">
+        <span>🌌</span>
+        <h3>Interstellar Concepts</h3>
+        <p>
+          Thinking about future propulsion, energy systems
+          and technologies for deep-space exploration.
+        </p>
+      </article>
+
+    </div>
+  </main>
+)}
 
       {active === "ideas" && (
         <main className="exploreContent">
