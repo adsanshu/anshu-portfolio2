@@ -51,7 +51,7 @@ export default function ExplorePage({ onBack }) {
         number: "06",
         title: "⚠️ Challenges",
         text:
-          "Powerful laser systems, beam control, thermal management and maintaining the beam over large distances are major engineering challenges."
+        "Powerful laser systems, beam control, thermal management and maintaining the beam over large distances are major engineering challenges."
       }
     ],
 
@@ -1582,7 +1582,7 @@ return (
 
         <div className="researchGrid">
 
-          {/* LASER PROPULSION */}
+          {/* LASER PROPULSION 
 
           <article className="researchCard">
 
@@ -1626,9 +1626,10 @@ return (
 
             </div>
           </article>
+            */
 
 
-          {/* SPACE ENERGY */}
+          {/* SPACE ENERGY 
 
           <article className="researchCard">
 
@@ -1674,7 +1675,8 @@ return (
           </article>
 
 
-          {/* AI + MECHANICAL */}
+       */  
+            /* AI + MECHANICAL 
 
           <article className="researchCard">
 
@@ -1720,7 +1722,7 @@ return (
           </article>
 
 
-          {/* INTERSTELLAR */}
+           INTERSTELLAR 
 
           <article className="researchCard">
 
@@ -1769,7 +1771,7 @@ return (
       </>
     ) : (
 
-      /* RESEARCH DETAIL */
+      RESEARCH DETAIL 
   <motion.article
     className="researchDetail"
     initial={{ opacity: 0, y: 30 }}
