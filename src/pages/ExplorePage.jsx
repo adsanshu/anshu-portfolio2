@@ -359,15 +359,8 @@ setSelectedPoem(unit);
   </div>
 )}
         {active === "research" && (
-          <>
-            <h2>🔬 Research</h2>
-
-            <p>
-              Engineering, science, space technology
-              and future research concepts.
-            </p>
-          </>
-        )}
+  <ResearchPage />
+)}
 
         {active === "ideas" && (
           <>
