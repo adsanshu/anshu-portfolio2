@@ -53,12 +53,13 @@
 /* ================================
    RESEARCH GRID
 ================================ */
-
-.researchSections {
+.researchGrid {
   width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 28px;
 }
 /* ================================
    RESEARCH CARD
@@ -203,4 +204,113 @@
   grid-template-columns: 1.05fr 0.95fr;
   gap: 45px;
   align-items: center;
- 
+ /* ================================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 850px) {
+
+  .researchPage {
+    padding: 25px 14px 70px;
+  }
+
+  .researchHero {
+    margin: 25px auto 35px;
+  }
+
+  .researchHero h1 {
+    font-size: 42px;
+    letter-spacing: -1.5px;
+  }
+
+  .researchHero p {
+    font-size: 15px;
+    line-height: 1.7;
+    padding: 0 8px;
+  }
+
+  .researchGrid {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .researchCard {
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .researchImageWrapper {
+    height: 210px;
+  }
+
+  .researchCardBody {
+    padding: 20px;
+  }
+
+  .researchCardBody h2 {
+    font-size: 23px;
+  }
+
+  .researchCardBody p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .researchReadButton {
+    width: 100%;
+    margin-top: 18px;
+  }
+
+  /* DETAIL */
+
+  .researchDetail {
+    width: 100%;
+  }
+
+  .researchBackButton {
+    margin: 0 0 25px;
+  }
+
+  .researchDetailHero {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .researchDetailImageBox {
+    width: 100%;
+  }
+
+  .researchDetailImage {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .researchDetailIntro {
+    width: 100%;
+  }
+
+  .researchDetailIntro h1 {
+    font-size: 34px;
+    line-height: 1.15;
+  }
+
+  .researchSections {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  .researchSectionCard {
+    width: 100%;
+  }
+
+  .researchFuture {
+    margin-top: 25px;
+  }
+
+}
