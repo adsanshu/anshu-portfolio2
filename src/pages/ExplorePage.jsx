@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import ResearchPage from "./ResearchPage";
 function ExplorePage({ onBack }) {
   const [active, setActive] = useState("home");
   const [selectedPoem, setSelectedPoem] = useState(null);
