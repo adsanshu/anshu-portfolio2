@@ -444,62 +444,6 @@ const poemParts = [
 
   </div>
 )}
-
-    {selectedPoem && (
-      <div className="poemDisplay">
-
-        <button
-          type="button"
-          className="poemClose"
-          onClick={() => setSelectedPoem(null)}
-        >
-          ← Back to Units
-        </button>
-
-        <span className="poemsLabel">
-          📖 मन के अनकहे स्वर
-        </span>
-
-        <h2>
-          {selectedPoem.title}
-        </h2>
-
-        <div className="poemText">
-
-          {selectedPoem.poem ? (
-            selectedPoem.poem.split("\n").map((line, index) => (
-              <React.Fragment key={index}>
-                {line}
-                <br />
-              </React.Fragment>
-            ))
-          ) : (
-            <p>
-              ✍️ इस Unit की कविता जल्द ही यहाँ जोड़ी जाएगी।
-            </p>
-          )}
-
-        </div>
-
-        <button
-  type="button"
-  className="poemNext"
-  onClick={() => {
-    const nextIndex = currentPoemIndex + 1;
-
-    if (nextIndex < allPoems.length) {
-      setCurrentPoemIndex(nextIndex);
-      setSelectedPoem(allPoems[nextIndex]);
-    }
-  }}
->
-  Next →
-</button>
-      </div>
-    )}
-
-  </div>
-)}
         {active === "research" && (
   <ResearchPage />
 )}
