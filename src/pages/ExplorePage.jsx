@@ -803,25 +803,243 @@ const stopPoem = () => {
   </motion.article>
 )}
   </main>
-)}
-      {active === "ideas" && !selectedIdea && (
-        <main className="exploreContent">
-          <h2>💡 Ideas</h2>
-          <p>
-            New inventions, projects and future concepts.
-          </p>
-        </main>
-      )}
+)}{active === "ideas" && !selectedIdea && (
+  <main className="exploreContent researchSection">
 
-      {active === "library" && (
-        <main className="exploreContent">
-          <h2>📚 Library</h2>
+    <div className="researchIntro">
+      <span className="researchLabel">
+        💡 CREATIVE & FUTURE IDEAS
+      </span>
+
+      <h2>Ideas & Concepts</h2>
+
+      <p>
+        New ideas combining engineering, technology, science and creativity.
+      </p>
+    </div>
+
+    <div className="researchGrid">
+
+      <article className="researchCard">
+        <div className="researchImage">
+          <div className="ideaIcon">🤖</div>
+          <span>SMART ENGINEERING</span>
+        </div>
+
+        <div className="researchBody">
+          <h3>🤖 AI + Engineering</h3>
+
           <p>
-            A growing collection of creative, technical and research work.
+            Ideas for using artificial intelligence in mechanical engineering,
+            design and manufacturing.
           </p>
-        </main>
-      )}
+
+          <div className="researchFacts">
+            <div>
+              <small>FIELD</small>
+              <strong>Smart Engineering</strong>
+            </div>
+
+            <div>
+              <small>STATUS</small>
+              <strong>Concept Idea</strong>
+            </div>
+          </div>
+
+          <button
+            className="researchButton"
+            onClick={() =>
+              setSelectedIdea({
+                icon: "🤖",
+                title: "AI + Engineering",
+                field: "Smart Engineering",
+                description:
+                  "Ideas for using artificial intelligence in mechanical engineering, design and manufacturing."
+              })
+            }
+          >
+            Explore Idea →
+          </button>
+        </div>
+      </article>
+
+
+      <article className="researchCard">
+        <div className="researchImage">
+          <div className="ideaIcon">🚀</div>
+          <span>FUTURE TECHNOLOGY</span>
+        </div>
+
+        <div className="researchBody">
+          <h3>🚀 Future Technology</h3>
+
+          <p>
+            Exploring technology concepts that could transform transportation,
+            energy and engineering.
+          </p>
+
+          <div className="researchFacts">
+            <div>
+              <small>FIELD</small>
+              <strong>Future Technology</strong>
+            </div>
+
+            <div>
+              <small>STATUS</small>
+              <strong>Concept Idea</strong>
+            </div>
+          </div>
+
+          <button
+            className="researchButton"
+            onClick={() =>
+              setSelectedIdea({
+                icon: "🚀",
+                title: "Future Technology",
+                field: "Future Technology",
+                description:
+                  "Exploring technology concepts that could transform transportation, energy and engineering."
+              })
+            }
+          >
+            Explore Idea →
+          </button>
+        </div>
+      </article>
+
+
+      <article className="researchCard">
+        <div className="researchImage">
+          <div className="ideaIcon">🌌</div>
+          <span>SPACE TECHNOLOGY</span>
+        </div>
+
+        <div className="researchBody">
+          <h3>🌌 Space Research Ideas</h3>
+
+          <p>
+            Creative concepts related to spacecraft, propulsion, energy and
+            future space exploration.
+          </p>
+
+          <div className="researchFacts">
+            <div>
+              <small>FIELD</small>
+              <strong>Space Technology</strong>
+            </div>
+
+            <div>
+              <small>STATUS</small>
+              <strong>Concept Idea</strong>
+            </div>
+          </div>
+
+          <button
+            className="researchButton"
+            onClick={() =>
+              setSelectedIdea({
+                icon: "🌌",
+                title: "Space Research Ideas",
+                field: "Space Technology",
+                description:
+                  "Creative concepts related to spacecraft, propulsion, energy and future space exploration."
+              })
+            }
+          >
+            Explore Idea →
+          </button>
+        </div>
+      </article>
+
+
+      <article className="researchCard">
+        <div className="researchImage">
+          <div className="ideaIcon">🌱</div>
+          <span>AGRITECH</span>
+        </div>
+
+        <div className="researchBody">
+          <h3>🌱 Agriculture Technology</h3>
+
+          <p>
+            Technology ideas that can help farmers identify crops, soil
+            conditions and plant diseases.
+          </p>
+
+          <div className="researchFacts">
+            <div>
+              <small>FIELD</small>
+              <strong>AgriTech</strong>
+            </div>
+
+            <div>
+              <small>STATUS</small>
+              <strong>Concept Idea</strong>
+            </div>
+          </div>
+
+          <button
+            className="researchButton"
+            onClick={() =>
+              setSelectedIdea({
+                icon: "🌱",
+                title: "Agriculture Technology",
+                field: "AgriTech",
+                description:
+                  "Technology ideas that can help farmers identify crops, soil conditions and plant diseases."
+              })
+            }
+          >
+            Explore Idea →
+          </button>
+        </div>
+      </article>
+
+
+      <article className="researchCard">
+        <div className="researchImage">
+          <div className="ideaIcon">📚</div>
+          <span>EDTECH</span>
+        </div>
+
+        <div className="researchBody">
+          <h3>📚 Education Technology</h3>
+
+          <p>
+            Ideas for making learning, testing and educational resources more
+            accessible through technology.
+          </p>
+
+          <div className="researchFacts">
+            <div>
+              <small>FIELD</small>
+              <strong>EdTech</strong>
+            </div>
+
+            <div>
+              <small>STATUS</small>
+              <strong>Concept Idea</strong>
+            </div>
+          </div>
+
+          <button
+            className="researchButton"
+            onClick={() =>
+              setSelectedIdea({
+                icon: "📚",
+                title: "Education Technology",
+                field: "EdTech",
+                description:
+                  "Ideas for making learning, testing and educational resources more accessible through technology."
+              })
+            }
+          >
+            Explore Idea →
+          </button>
+        </div>
+      </article>
 
     </div>
-  );
-}
+
+  </main>
+)}
