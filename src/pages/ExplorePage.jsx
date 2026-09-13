@@ -323,62 +323,145 @@ const stopPoem = () => {
       )}
 
       {active === "research" && (
-  <main className="exploreContent">
-    <div className="poemsIntro">
-      <span className="poemsLabel">
-        🔬 ENGINEERING & FUTURE RESEARCH
-      </span>
+  <main className="exploreContent researchSection">
 
+    <div className="researchIntro">
+      <span className="researchLabel">🔬 ENGINEERING & FUTURE TECHNOLOGY</span>
       <h2>Research & Discoveries</h2>
-
       <p>
-        Engineering concepts, scientific questions,
-        future technologies and my research ideas.
+        Simple explanations of engineering concepts, scientific ideas
+        and technologies that may shape the future.
       </p>
     </div>
 
-    <div className="exploreCards">
+    <div className="researchGrid">
 
-      <article className="exploreCard">
-        <span>🚀</span>
-        <h3>Laser Propulsion</h3>
-        <p>
-          Exploring how laser energy and radiation pressure
-          could help spacecraft travel through space.
-        </p>
+      <article className="researchCard">
+        <div className="researchImage">
+          <img src="/assets/research-laser.jpg" alt="Laser Propulsion" />
+          <span>SPACE TECHNOLOGY</span>
+        </div>
+
+        <div className="researchBody">
+          <h3>🚀 Laser Propulsion</h3>
+          <p>
+            Exploring how powerful laser beams could push spacecraft
+            without carrying traditional fuel.
+          </p>
+
+          <div className="researchFacts">
+            <div>
+              <small>FIELD</small>
+              <strong>Space Engineering</strong>
+            </div>
+            <div>
+              <small>STATUS</small>
+              <strong>Research Idea</strong>
+            </div>
+          </div>
+
+          <button className="researchButton">
+            Explore Research →
+          </button>
+        </div>
       </article>
 
-      <article className="exploreCard">
-        <span>⚡</span>
-        <h3>Space Energy Transfer</h3>
-        <p>
-          Studying the possibility of transferring energy
-          across large distances using electromagnetic systems.
-        </p>
+
+      <article className="researchCard">
+        <div className="researchImage">
+          <img src="/assets/research-energy.jpg" alt="Space Energy Transfer" />
+          <span>ENERGY SYSTEMS</span>
+        </div>
+
+        <div className="researchBody">
+          <h3>⚡ Space Energy Transfer</h3>
+          <p>
+            Studying how energy might be transferred across very large
+            distances using electromagnetic systems.
+          </p>
+
+          <div className="researchFacts">
+            <div>
+              <small>FIELD</small>
+              <strong>Energy Engineering</strong>
+            </div>
+            <div>
+              <small>STATUS</small>
+              <strong>Concept Study</strong>
+            </div>
+          </div>
+
+          <button className="researchButton">
+            Explore Research →
+          </button>
+        </div>
       </article>
 
-      <article className="exploreCard">
-        <span>🤖</span>
-        <h3>Future Engineering</h3>
-        <p>
-          Ideas connecting mechanical engineering,
-          automation, AI and emerging technologies.
-        </p>
+
+      <article className="researchCard">
+        <div className="researchImage">
+          <img src="/assets/research-ai.jpg" alt="AI Mechanical Engineering" />
+          <span>SMART ENGINEERING</span>
+        </div>
+
+        <div className="researchBody">
+          <h3>🤖 AI + Mechanical Engineering</h3>
+          <p>
+            Exploring how artificial intelligence can improve design,
+            manufacturing, automation and engineering decisions.
+          </p>
+
+          <div className="researchFacts">
+            <div>
+              <small>FIELD</small>
+              <strong>Mechanical + AI</strong>
+            </div>
+            <div>
+              <small>STATUS</small>
+              <strong>Exploration</strong>
+            </div>
+          </div>
+
+          <button className="researchButton">
+            Explore Research →
+          </button>
+        </div>
       </article>
 
-      <article className="exploreCard">
-        <span>🌌</span>
-        <h3>Interstellar Concepts</h3>
-        <p>
-          Thinking about future propulsion, energy systems
-          and technologies for deep-space exploration.
-        </p>
+
+      <article className="researchCard">
+        <div className="researchImage">
+          <img src="/assets/research-interstellar.jpg" alt="Interstellar Propulsion" />
+          <span>FUTURE SPACE</span>
+        </div>
+
+        <div className="researchBody">
+          <h3>🌌 Interstellar Propulsion</h3>
+          <p>
+            Thinking about future propulsion systems that could make
+            deep-space and interstellar missions possible.
+          </p>
+
+          <div className="researchFacts">
+            <div>
+              <small>FIELD</small>
+              <strong>Space Propulsion</strong>
+            </div>
+            <div>
+              <small>STATUS</small>
+              <strong>Future Concept</strong>
+            </div>
+          </div>
+
+          <button className="researchButton">
+            Explore Research →
+          </button>
+        </div>
       </article>
 
     </div>
   </main>
 )}
-
       {active === "ideas" && (
         <main className="exploreContent">
           <h2>💡 Ideas</h2>
