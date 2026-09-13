@@ -263,15 +263,18 @@ const poemParts = [
 
             {part.units.map((unit, index) => (
   <button
+    type="button"
     className="unitItem"
-    key={index}
-    onClick={() => setSelectedPoem(unit)}
+    key={unit.id}
+    onClick={() => {
+      setSelectedPoem(unit);
+    }}
   >
     <span>📄</span>
 
     <span>
-  Unit {index + 1} — {unit.title}
-</span>
+      Unit {index + 1} — {unit.title}
+    </span>
 
     <span>→</span>
   </button>
