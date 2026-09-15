@@ -11,7 +11,7 @@ const poemParts = [
   {
     id: 1,
     title: "प्रेम की शुरुआत",
-    icon: "❤️",
+    icon: "❤️❤️",
     units: [
       {
         id: "part1-unit1",
@@ -70,7 +70,7 @@ const poemParts = [
   {
     id: 2,
     title: "इश्क़ का सफ़र",
-    icon: "🌹",
+    icon: "🌹✈️",
     units: [
       { id: "part2-unit1", title: "बढ़ती मोहब्बत", poem: "" },
       { id: "part2-unit2", title: "तेरी आदत", poem: "" },
