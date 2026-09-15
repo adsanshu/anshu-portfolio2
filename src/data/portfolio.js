@@ -76,7 +76,7 @@ export const portfolio = {
     tags: ['Thunkable', 'Firebase'],
     icon: '📚',
     image: '/assets/ads-learn.png',
-    demo: '',
+    demo: 'https://ads-learn-academy.vercel.app/',
     github: ''
   },
 
