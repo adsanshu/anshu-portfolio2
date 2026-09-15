@@ -348,3 +348,207 @@
   }
 
 }
+   @media (max-width: 850px) {
+
+  .researchPage {
+    padding: 25px 14px 70px !important;
+    overflow-x: hidden !important;
+  }
+
+  .researchDetail {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .researchDetailIntro p {
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+    color: #64748b;
+  }
+
+  .researchSections {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+@media (max-width: 600px) {
+
+  .researchDetailImageBox {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .researchDetailImage {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .researchDetailHero {
+    align-items: stretch !important;
+  }
+
+}
+      @media (max-width: 600px) {
+
+  .researchDetailHero {
+    margin-top: 20px !important;
+    padding: 0 !important;
+  }
+
+  .researchDetailImageBox {
+    margin: 0 0 5px 0 !important;
+  }
+
+  .researchDetailIntro {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .researchDetailIntro h1 {
+    margin: 0 0 14px 0 !important;
+  }
+
+  .researchDetailIntro p {
+    margin: 0 !important;
+  }
+
+      }
+  .researchSectionCard {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+   }
+@media (max-width: 600px) {
+
+  .researchSectionCard {
+    padding: 22px 18px !important;
+    border-radius: 18px !important;
+    box-sizing: border-box !important;
+  }
+
+  .researchSectionCard h3 {
+    font-size: 21px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .researchSectionCard p {
+    font-size: 14px !important;
+    line-height: 1.75 !important;
+    margin: 0 !important;
+  }
+
+}
+   @media (max-width: 600px) {
+
+  .researchBackButton {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px 16px !important;
+    margin-bottom: 20px !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    white-space: nowrap !important;
+  }
+
+   }
+   @media (max-width: 600px) {
+
+  .researchCard {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .researchCardBody {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 20px !important;
+  }
+
+  .researchCardBody h2 {
+    font-size: 22px !important;
+    line-height: 1.3 !important;
+  }
+
+  .researchCardBody p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+
+   }
+   @media (max-width: 600px) {
+
+  .researchHero {
+    width: 100% !important;
+    margin: 20px auto 30px !important;
+    text-align: center !important;
+  }
+
+  .researchHero h1 {
+    font-size: 34px !important;
+    line-height: 1.15 !important;
+    letter-spacing: -1px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .researchHero p {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+    padding: 0 5px !important;
+  }
+
+  .researchLabel {
+    font-size: 11px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+   }
+   @media (max-width: 600px) {
+
+  .researchFuture {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 22px 18px !important;
+    margin-top: 25px !important;
+    border-radius: 18px !important;
+  }
+
+  .researchFuture h3 {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+  }
+
+  .researchFuture p {
+    font-size: 14px !important;
+    line-height: 1.75 !important;
+  }
+
+   }
+   @media (max-width: 600px) {
+
+  .researchReadButton {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 18px !important;
+    font-size: 14px !important;
+  }
+
+  .researchDetail {
+    padding-bottom: 30px !important;
+  }
+
+  .researchPage img {
+    max-width: 100% !important;
+  }
+
+   }
