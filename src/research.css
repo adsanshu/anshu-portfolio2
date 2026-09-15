@@ -314,3 +314,37 @@
   }
 
 }
+/* MOBILE RESEARCH FIX */
+@media (max-width: 850px) {
+
+  .researchDetailHero {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 25px !important;
+  }
+
+  .researchDetailImageBox {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .researchDetailImage {
+    display: block !important;
+    width: 100% !important;
+    height: 240px !important;
+    object-fit: cover !important;
+    border-radius: 20px !important;
+  }
+
+  .researchDetailIntro {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .researchDetailIntro h1 {
+    font-size: 34px !important;
+    line-height: 1.15 !important;
+  }
+
+}
