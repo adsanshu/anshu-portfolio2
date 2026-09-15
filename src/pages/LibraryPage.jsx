@@ -1,7 +1,6 @@
 
 import React, { useState } from "react";
 import "../library.css";
-
 const libraryData = {
   mechanical: {
     icon: "⚙️",
