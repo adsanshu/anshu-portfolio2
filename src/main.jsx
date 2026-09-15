@@ -8,8 +8,9 @@ import {
 } from 'lucide-react';
 import { portfolio, copy } from './data/portfolio';
 import './styles.css';
-import ExplorePage from "./pages/ExplorePage";
 import "./library.css";
+import ExplorePage from "./pages/ExplorePage";
+
 
 const sectionIds = ['about', 'education', 'skills', 'projects', 'certificates', 'achievements', 'resume', 'contact'];
 
