@@ -117,13 +117,7 @@ function LibraryPage() {
     : null;
 
   return (
-  <div
-  className="libraryPage"
-  style={{
-    background: "red",
-    minHeight: "100vh"
-  }}
->
+  <div className="libraryPage">
 
       {!currentCategory ? (
         <>
